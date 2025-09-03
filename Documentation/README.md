@@ -8,7 +8,7 @@
 
 
 ```haskell
-{assinatura da função}
+assinatura da função
 ```
 
 Descrição...
