@@ -1,3 +1,4 @@
+module Types where
 import Data.Time.Calendar
 
 -- Dist^ancias e comprimentos
