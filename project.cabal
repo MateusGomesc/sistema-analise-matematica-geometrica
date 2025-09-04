@@ -1,0 +1,36 @@
+cabal-version: 2.4
+name: sistema-analise-matematica-geometrica
+version: 1.0.0
+author: Grupo de Estudantes
+maintainer: grupo@email.com
+synopsis: Sistema de análise matemática para engenharia
+build-type: Simple
+executable sistema-analise-matematica-geometrica
+    main-is: Main.hs
+    other-modules:
+        Types,
+        Geometry,
+        LinearAlgebra,
+        Calculus,
+        Algorithms,
+        DataStructures,
+        Validation,
+        Reports,
+        Interface,
+        Engineering.Civil,
+        Engineering.Mechanical,
+        Engineering.Electrical,
+        Engineering.All
+    build-depends:
+        base >=4.14 && < 4.22,
+        time >=1.9,
+        containers >=0.6
+    default-language: Haskell2010
+    ghc-options: -Wall -Wextra -O2
+test-suite tests
+    type: exitcode-stdio-1.0
+    main-is: Tests/AllTests.hs
+    build-depends:
+        base,
+        sistema-analise-matematica-geometrica
+    default-language: Haskell2010
