@@ -78,3 +78,39 @@ Recebe uma função. <br/>
 Recebe dois Doubles indicando o intervalo no eixo x. <br/>
 Para funções lineares utiliza da hipotenusa para calcular, para funções quadráticas utiliza de integrais e derivadas. <br/>
 Retorna o valor do tamanho da curva. <br/>
+
+### Engenharia Mecânica
+
+```haskell
+energiaCinetica :: Massa-> Velocidade-> Energia
+```
+
+Recebe uma tipo algebrico Massa e um tipo algebrico Velocidade. <br/>
+Realiza o cálculo. <br/>
+Retorna um tipo algebrico Energia com o resultado. <br/>
+
+```haskell
+energiaPotencial :: Massa-> Altura-> Energia
+```
+
+Recebe uma tipo algebrico Massa e um tipo algebrico Altura. <br/>
+Realiza o cálculo. <br/>
+Retorna um tipo algebrico Energia com o resultado. <br/>
+
+```haskell
+centroMassaX :: [(Massa, Distancia)]-> Distancia
+```
+
+Recebe uma lista contendo tuplas com o tipo algebrico Massa na primeira posição e na segunda posição o tipo algebrico Distancia. <br/>
+Realiza o cálculo. <br/>
+Retorna um tipo algebrico Distancia com o resultado. <br/>
+
+### Engenharia Elétrica
+
+```haskell
+tensaoOhm :: Corrente-> Resistencia-> Tensao
+```
+
+Recebe uma tipo algebrico Corrente e um tipo algebrico Resistência. <br/>
+Realiza o cálculo. <br/>
+Retorna um tipo algebrico Tensao com o resultado. <br/>
