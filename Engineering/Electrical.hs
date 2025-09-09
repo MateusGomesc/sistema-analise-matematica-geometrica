@@ -11,4 +11,7 @@ potenciaEletricaRI r i = r * i^2
 potenciaEletricaVR :: Tensao-> Resistencia-> PotenciaEletrica
 potenciaEletricaVR v r = v^2 / r
 
+resistenciaSerie :: [Resistencia] -> Resistencia
+resistenciaSerie [] = 0
+resistenciaSerie (r:rs) = r + resistenciaSerie rs
 
