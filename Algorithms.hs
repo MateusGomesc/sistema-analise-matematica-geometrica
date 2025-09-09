@@ -1,3 +1,5 @@
+module Algorithms where
+
 import Types
 
 quickSort :: (Ord a) => [a] -> [a]
@@ -42,3 +44,4 @@ inserirOrdenado x [] = [x]
 inserirOrdenado x (y:ys)
   | x <= y    = x : y : ys
   | otherwise = y : inserirOrdenado x ys 
+
