@@ -15,3 +15,8 @@ resistenciaSerie :: [Resistencia] -> Resistencia
 resistenciaSerie [] = 0
 resistenciaSerie (r:rs) = r + resistenciaSerie rs
 
+resistenciaParalelo :: [Resistencia] -> Resistencia
+resistenciaParalelo [] = 0  
+resistenciaParalelo [r] = r
+resistenciaParalelo (r:rs) = 1 / (1/r + 1 / resistenciaParalelo rs)
+
