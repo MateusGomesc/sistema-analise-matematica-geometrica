@@ -45,3 +45,8 @@ inserirOrdenado x (y:ys)
   | x <= y    = x : y : ys
   | otherwise = y : inserirOrdenado x ys 
 
+filtrarProjetos :: (Projeto -> Bool) -> [Projeto] -> [Projeto]
+filtrarProjetos _ [] = []
+filtrarProjetos f (p:ps)
+  | f p       = p : filtrarProjetos f ps
+  | otherwise = filtrarProjetos f ps
