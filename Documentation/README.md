@@ -85,6 +85,9 @@ Recebe dois Doubles indicando o intervalo no eixo x. <br/>
 Para funções lineares utiliza da hipotenusa para calcular, para funções quadráticas utiliza de integrais e derivadas. <br/>
 Retorna o valor do tamanho da curva. <br/>
 
+### Especialista 4: Algoritmos e Estruturas de Dados
+
+
 ### Engenharia Mecânica
 
 ```haskell
