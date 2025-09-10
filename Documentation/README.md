@@ -108,6 +108,14 @@ Aplica recursivamente o MergeSort em cada metade. <br/>
 Une as duas metades ordenadas usando a função merge, comparando elemento a elemento. <br/>
 Devolve uma lista ordenada do mesmo tipo ([a]) em ordem crescente. <br/>
 
+```haskell
+insertionSort :: (Ord a) => [a] -> [a]
+```
+Recebe uma lista de elementos de um tipo que pode ser ordenado (Ord a => [a]). <br/>
+Verifica se a lista está vazia; se sim, retorna a lista como está. <br/>
+Caso contrário, pega o primeiro elemento (x) e aplica recursivamente o InsertionSort no restante da lista. <br/>
+Insere o elemento x na posição correta da lista ordenada usando a função auxiliar insert. <br/>
+Devolve uma lista ordenada do mesmo tipo ([a]) em ordem crescente. <br/>
 
 ### Engenharia Mecânica
 
