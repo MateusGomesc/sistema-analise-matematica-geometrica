@@ -23,10 +23,12 @@ Descrição...
 
 ```haskell
  distanciaEntrePontos :: Ponto2D -> Ponto2D -> Distancia
+```
+
  Recebe dois pontos 2D representados pelo tipo Ponto2D.
  Calcula a distância euclidiana entre os dois pontos.
  Devolve um valor do tipo Distancia (Double) representando a distância entre os pontos.
-```
+
 
 
 ### Especialista 2: Álgebra Linear e Operações com Matrizes
