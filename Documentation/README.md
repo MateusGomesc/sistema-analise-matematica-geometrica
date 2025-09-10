@@ -120,3 +120,31 @@ tensaoOhm :: Corrente-> Resistencia-> Tensao
 Recebe uma tipo algebrico Corrente e um tipo algebrico Resistência. <br/>
 Realiza o cálculo. <br/>
 Retorna um tipo algebrico Tensao com o resultado. <br/>
+
+```haskell
+potenciaEletricaRI :: Resistencia -> Corrente -> PotenciaEletrica
+```
+Recebe um tipo algebrico Resistencia e um tipo algebrico Corrente. <br/>
+Realiza o cálculo. <br/>
+Retorna um tipo algebrico PotenciaEletrica com o resultado. <br/> 
+ 
+```haskell
+potenciaEletricaVR :: Tensao -> Resistencia -> PotenciaEletrica
+```
+Recebe um tipo algebrico Tensao e um tipo algebrico Resistencia. <br/>
+Realiza o cálculo. <br/>
+Retorna um tipo algebrico PotenciaEletrica com o resultado. <br/>
+
+```haskell
+resistenciaSerie :: [Resistencia] -> Resistencia
+```
+Recebe uma lista de resistências ([Resistencia]). <br/>
+Realiza o cálculo da resistência equivalente de resistores ligados em série. <br/>
+Retorna um tipo algebrico Resistencia com o resultado. <br/>
+
+```haskell
+resistenciaParalelo :: [Resistencia] -> Resistencia
+```
+Recebe uma lista de resistências ([Resistencia]). <br/>
+Realiza o cálculo da resistência equivalente de resistores ligados em paralelo. <br/>
+Retorna um tipo algebrico Resistencia com o resultado. <br/>
