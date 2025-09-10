@@ -29,6 +29,35 @@ Descrição...
  Calcula a distância euclidiana entre os dois pontos.<br/>
  Devolve um valor do tipo Distancia (Double) representando a distância entre os pontos.<br/>
 
+```haskell
+distancia3D :: Ponto3D -> Ponto3D -> Distancia
+```
+
+Recebe dois pontos 3D representados pelo tipo Ponto3D.<br/> 
+Calcula a distância euclidiana entre os dois pontos no espaço 3D.
+<br/> Devolve um valor do tipo Distancia (Double) representando a distância entre os pontos.<br/>
+
+```haskell
+pontoMedio :: Ponto2D -> Ponto2D -> Ponto2D
+```
+Recebe dois pontos 2D representados pelo tipo Ponto2D.<br/>
+Calcula o ponto médio entre os dois pontos.<br/>
+Devolve um Ponto2D representando o ponto médio.<br/>
+
+```haskell
+ calcularArea :: Figura -> Area
+```
+Recebe um tipo algebrico Figura representando a figura desejada.<br/>
+Verifica qual figura está sendo recebida (Retangulo, Circulo, Triangulo, Poligono, Cilindro, Esfera, Paralelepipedo)<br/>
+Calcula a área correspondente de acordo com a figura.<br/>
+Devolve um valor do tipo Area (Double) representando a área calculada.<br/>
+
+```haskell
+areaPoligono :: [Ponto2D] -> Double
+```
+Recebe uma lista de pontos 2D representando os vértices de um polígono.<br/>
+Calcula a área do polígono usando a fórmula do sapateiro (Shoelace formula).<br/>
+Devolve um valor do tipo Double representando a área do polígono.<br/> 
 
 
 ### Especialista 2: Álgebra Linear e Operações com Matrizes
