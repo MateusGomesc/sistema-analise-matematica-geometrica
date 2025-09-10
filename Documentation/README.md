@@ -97,6 +97,18 @@ Divide os elementos restantes em duas listas: menores ou iguais ao pivô e maior
 Aplica recursivamente o QuickSort em cada sublista. <br/>
 Devolve uma lista ordenada do mesmo tipo ([a]) em ordem crescente.  <br/>
 
+
+```haskell
+mergeSort :: (Ord a) => [a] -> [a]
+```
+Recebe uma lista de elementos de um tipo que pode ser ordenado (Ord a => [a]). <br/>
+Verifica se a lista está vazia ou contém apenas um elemento; se sim, retorna a lista como está. <br/>
+Caso contrário, divide a lista em duas metades (left e right). <br/>
+Aplica recursivamente o MergeSort em cada metade. <br/>
+Une as duas metades ordenadas usando a função merge, comparando elemento a elemento. <br/>
+Devolve uma lista ordenada do mesmo tipo ([a]) em ordem crescente. <br/>
+
+
 ### Engenharia Mecânica
 
 ```haskell
