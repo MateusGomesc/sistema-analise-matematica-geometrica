@@ -88,6 +88,15 @@ Retorna o valor do tamanho da curva. <br/>
 ### Especialista 4: Algoritmos e Estruturas de Dados
 
 
+```haskell
+quickSort :: (Ord a) => [a] -> [a]
+```
+Recebe uma lista de elementos de um tipo que pode ser ordenado (Ord a => [a]). <br/>
+Verifica se a lista está vazia; se não, seleciona o primeiro elemento como pivô. <br/>
+Divide os elementos restantes em duas listas: menores ou iguais ao pivô e maiores que o pivô. <br/>
+Aplica recursivamente o QuickSort em cada sublista. <br/>
+Devolve uma lista ordenada do mesmo tipo ([a]) em ordem crescente.  <br/>
+
 ### Engenharia Mecânica
 
 ```haskell
