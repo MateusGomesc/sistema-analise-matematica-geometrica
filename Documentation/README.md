@@ -218,7 +218,42 @@ Retorna 'Nothing' caso nenhum projeto com o ID informado seja encontrado. <br/>
 ```haskell
 inserirOrdenado :: (Ord a) => a -> [a] -> [a]
 ```
+Recebe um elemento do tipo 'a' que implementa a classe 'Ord', representando o valor a ser inserido. <br/>
+Recebe, na sequência, uma lista ordenada de elementos do tipo '[a]'. <br/>
+Percorre a lista para encontrar a posição correta onde o elemento deve ser inserido, mantendo a ordenação da lista. <br/>
+Retorna uma nova lista do tipo '[a]' com o elemento inserido na posição correta. <br/>
 
+```haskell
+inserir :: (Ord a) => a -> ArvoreBinaria a -> ArvoreBinaria a
+```
+Recebe um elemento do tipo 'a' que implementa a classe 'Ord', representando o valor a ser inserido. <br/>
+Recebe, na sequência, uma árvore binária de busca do tipo 'ArvoreBinaria a'. <br/>
+Insere o elemento na posição correta da árvore, mantendo a propriedade da árvore binária de busca. <br/>
+Retorna uma nova árvore do tipo 'ArvoreBinaria a' com o elemento inserido. <br/>
+ 
+```haskell
+construirArvore :: (Ord a) => [a] -> ArvoreBinaria a
+```
+Recebe uma lista de elementos do tipo 'a' que implementa a classe 'Ord'. <br/>
+Percorre a lista inserindo cada elemento em uma árvore binária de busca vazia, utilizando a função 'inserir'. <br/>
+Retorna uma árvore binária de busca do tipo 'ArvoreBinaria a' contendo todos os elementos da lista. <br/>
+ 
+```haskell
+buscarArvore :: (Ord a) => a -> ArvoreBinaria a -> Bool
+```
+Recebe um elemento do tipo 'a' que implementa a classe 'Ord', representando o valor a ser buscado. <br/>
+Recebe, na sequência, uma árvore binária de busca do tipo 'ArvoreBinaria a'. <br/>
+Percorre a árvore verificando se o elemento está presente, comparando com os valores dos nós e seguindo a propriedade da árvore binária de busca. <br/>
+Retorna 'True' se o elemento for encontrado na árvore. <br/>
+Retorna 'False' caso contrário. <br/>
+ 
+```haskell
+filtrarProjetos :: (Projeto -> Bool) -> [Projeto] -> [Projeto]
+```
+Recebe uma função do tipo 'Projeto -> Bool' que representa o critério de filtragem.  <br/>
+Recebe, na sequência, uma lista de projetos '[Projeto]'.  <br/>
+Percorre a lista aplicando a função de filtragem a cada projeto.  <br/>
+Retorna uma nova lista contendo apenas os projetos que satisfazem o critério (para os quais a função retorna 'True').  <br/>
 
 ### Engenharia Civil
 
