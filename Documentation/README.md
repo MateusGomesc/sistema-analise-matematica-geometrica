@@ -25,79 +25,79 @@ Descrição...
 somarMatrizes :: Matriz -> Matriz -> Maybe Matriz
 ```
 
-Recebe duas matrizes do tipo algébrico Matriz. 
-Verifica se ambas possuem as mesmas dimensões. 
-Realiza a soma elemento a elemento entre as duas matrizes. 
-Retorna Just Matriz com o resultado da soma ou Nothing se forem incompatíveis.
+Recebe duas matrizes do tipo algébrico Matriz. <br/>
+Verifica se ambas possuem as mesmas dimensões. <br/>
+Realiza a soma elemento a elemento entre as duas matrizes. <br/>
+Retorna Just Matriz com o resultado da soma ou Nothing se forem incompatíveis. <br/>
 
 ```haskell
 dimensoesIguais :: [[Double]] -> [[Double]] -> Bool
 ```
 
-Recebe duas listas de listas de Double representando matrizes. 
-Verifica se ambas possuem o mesmo número de linhas e colunas. 
-Retorna True se forem compatíveis ou False caso contrário.
+Recebe duas listas de listas de Double representando matrizes. <br/>
+Verifica se ambas possuem o mesmo número de linhas e colunas. <br/>
+Retorna True se forem compatíveis ou False caso contrário.<br/>
 
 ```haskell
 multiplicarMatrizes :: Matriz -> Matriz -> Maybe Matriz
 ```
 
-Recebe duas matrizes do tipo algébrico Matriz. 
-Verifica se o número de colunas da primeira é igual ao número de linhas da segunda. 
-Realiza a multiplicação matricial utilizando transposição e produto escalar. 
-Retorna Just Matriz com o resultado ou Nothing se forem incompatíveis.
+Recebe duas matrizes do tipo algébrico Matriz. <br/>
+Verifica se o número de colunas da primeira é igual ao número de linhas da segunda. <br/>
+Realiza a multiplicação matricial utilizando transposição e produto escalar. <br/>
+Retorna Just Matriz com o resultado ou Nothing se forem incompatíveis. <br/>
 
 ```haskell
 transpostaMatriz :: Matriz -> Matriz
 ```
 
-Recebe uma matriz do tipo algébrico Matriz. 
-Aplica a transposição da matriz, trocando linhas por colunas. 
-Retorna uma nova Matriz transposta.
+Recebe uma matriz do tipo algébrico Matriz. <br/>
+Aplica a transposição da matriz, trocando linhas por colunas. <br/>
+Retorna uma nova Matriz transposta.<br/>
 
 ```haskell
 determinante :: Matriz -> Maybe Double
 ```
 
-Recebe uma matriz do tipo algébrico Matriz. 
-Verifica se a matriz é quadrada. 
-Calcula o determinante utilizando expansão de Laplace.
-Retorna Just Double com o valor do determinante ou Nothing se a matriz não for quadrada.
+Recebe uma matriz do tipo algébrico Matriz. <br/>
+Verifica se a matriz é quadrada. <br/>
+Calcula o determinante utilizando expansão de Laplace.<br/>
+Retorna Just Double com o valor do determinante ou Nothing se a matriz não for quadrada. <br/>
 
 ```haskell
 resolverSistemaLinear :: Matriz -> Vetor -> Maybe Vetor
 ```
 
-Recebe uma matriz quadrada do tipo Matriz e um vetor de termos independentes do tipo Vetor. 
-Verifica se o sistema é compatível e se a matriz é invertível. 
-Resolve o sistema linear utilizando o método de Cramer. 
-Retorna Just Vetor com a solução ou Nothing se não houver solução única.
+Recebe uma matriz quadrada do tipo Matriz e um vetor de termos independentes do tipo Vetor. <br/>
+Verifica se o sistema é compatível e se a matriz é invertível. <br/>
+Resolve o sistema linear utilizando o método de Cramer. <br/>
+Retorna Just Vetor com a solução ou Nothing se não houver solução única. <br/>
 
 ```haskell
 produtoEscalar :: Vetor -> Vetor -> Maybe Double
 ```
 
-Recebe dois vetores do tipo algébrico Vetor. 
-Verifica se os vetores possuem o mesmo tamanho. 
-Calcula o produto escalar entre os dois vetores. 
-Retorna Just Double com o resultado ou Nothing se forem incompatíveis.
+Recebe dois vetores do tipo algébrico Vetor. <br/>
+Verifica se os vetores possuem o mesmo tamanho. <br/>
+Calcula o produto escalar entre os dois vetores. <br/>
+Retorna Just Double com o resultado ou Nothing se forem incompatíveis. <br/>
 
 ```haskell
 normaVetor :: Vetor -> Double
 ```
 
-Recebe um vetor do tipo algébrico Vetor. 
-Calcula a norma do vetor (comprimento). 
-Retorna um Double representando a norma.
+Recebe um vetor do tipo algébrico Vetor. <br/>
+Calcula a norma do vetor (comprimento). <br/>
+Retorna um Double representando a norma. <br/>
 
 ```haskell
 anguloEntreVetores :: Vetor -> Vetor -> Maybe Angulo
 ```
 
-Recebe dois vetores do tipo algébrico Vetor. 
-Verifica se os vetores são compatíveis e não nulos. 
-Calcula o ângulo entre os vetores usando produto escalar e norma. 
-Retorna Just Angulo em radianos ou Nothing se não for possível calcular.
+Recebe dois vetores do tipo algébrico Vetor. <br/>
+Verifica se os vetores são compatíveis e não nulos. <br/>
+Calcula o ângulo entre os vetores usando produto escalar e norma. <br/>
+Retorna Just Angulo em radianos ou Nothing se não for possível calcular. <br/>
 
 ### Especialista 3: Cálculo Diferencial e Integral
 
@@ -202,10 +202,10 @@ Devolve uma lista ordenada do mesmo tipo ([a]) em ordem crescente. <br/>
 volumeConcreto :: Figura -> Volume
 ```
 
-Recebe uma figura geométrica do tipo algébrico Figura. 
-Verifica qual tipo de figura foi recebida. 
-Calcula o volume de concreto necessário com base na fórmula da figura. 
-Retorna um Volume em metros cúbicos.
+Recebe uma figura geométrica do tipo algébrico Figura. <br/>
+Verifica qual tipo de figura foi recebida. <br/>
+Calcula o volume de concreto necessário com base na fórmula da figura. <br/>
+Retorna um Volume em metros cúbicos. <br/>
 
 ### Engenharia Mecânica
 
@@ -213,25 +213,25 @@ Retorna um Volume em metros cúbicos.
 calcularTorque :: Forca -> Distancia -> Angulo -> Torque
 ```
 
-Recebe uma força (Forca), uma distância (Distancia) e um ângulo (Angulo). 
-Aplica a fórmula do torque: τ = F · r · sin(θ). 
-Retorna um Torque em Newton-metro.
+Recebe uma força (Forca), uma distância (Distancia) e um ângulo (Angulo). <br/>
+Aplica a fórmula do torque: τ = F · r · sin(θ). <br/>
+Retorna um Torque em Newton-metro. <br/>
 
 ```haskell
 velocidadeAngular :: Velocidade -> Raio -> VelocidadeAngular
 ```
 
-Recebe uma velocidade linear (Velocidade) e um raio (Raio). 
-Aplica a fórmula da velocidade angular: ω = v / r. 
-Retorna uma VelocidadeAngular em rad/s. Retorna 0 se o raio for nulo.
+Recebe uma velocidade linear (Velocidade) e um raio (Raio). <br/>
+Aplica a fórmula da velocidade angular: ω = v / r. <br/>
+Retorna uma VelocidadeAngular em rad/s. Retorna 0 se o raio for nulo. <br/>
 
 ```haskell
 aceleracaocentripeta :: Velocidade -> Raio -> Aceleracao
 ```
 
-Recebe uma velocidade tangencial (Velocidade) e um raio (Raio). 
-Aplica a fórmula da aceleração centrípeta: a = v² / r. 
-Retorna uma Aceleracao em m/s². Retorna 0 se o raio for nulo.
+Recebe uma velocidade tangencial (Velocidade) e um raio (Raio). <br/>
+Aplica a fórmula da aceleração centrípeta: a = v² / r. <br/>
+Retorna uma Aceleracao em m/s². Retorna 0 se o raio for nulo. <br/>
 
 ```haskell
 energiaCinetica :: Massa-> Velocidade-> Energia
