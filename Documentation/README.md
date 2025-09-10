@@ -53,11 +53,25 @@ Calcula a área correspondente de acordo com a figura.<br/>
 Devolve um valor do tipo Area (Double) representando a área calculada.<br/>
 
 ```haskell
-areaPoligono :: [Ponto2D] -> Double
+calcularPerimetro :: Figura -> Perimetro
 ```
-Recebe uma lista de pontos 2D representando os vértices de um polígono.<br/>
-Calcula a área do polígono usando a fórmula do sapateiro (Shoelace formula).<br/>
-Devolve um valor do tipo Double representando a área do polígono.<br/> 
+Recebe uma figura geométrica representada pelo tipo algébrico Figura.<br/>
+Verifica o tipo da figura (retângulo, círculo, triângulo, polígono) e aplica a fórmula adequada para calcular o perímetro.<br/>
+Devolve um valor do tipo Perimetro representando o perímetro da figura.<br/>
+
+```haskell
+calcularVolume :: Figura -> Volume
+```
+Recebe uma figura tridimensional representada pelo tipo algébrico Figura.<br/>
+Verifica o tipo da figura (esfera, cilindro, paralelepípedo) e aplica a fórmula de volume correspondente.<br/>
+Devolve um valor do tipo Volume representando o volume da figura.<br/>
+
+```haskell
+intersecaoRetas :: (Ponto2D, Ponto2D) -> (Ponto2D, Ponto2D) -> Maybe Ponto2D
+```
+Recebe duas retas, cada uma representada por um par de pontos bidimensionais (Ponto2D).<br/>
+Verifica se as retas são coincidentes, paralelas ou se possuem um ponto de interseção único.<br/>
+Devolve Nothing caso não haja ponto único de interseção, ou Just Ponto2D quando existe.<br/>
 
 
 ### Especialista 2: Álgebra Linear e Operações com Matrizes
