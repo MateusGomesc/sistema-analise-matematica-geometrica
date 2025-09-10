@@ -61,7 +61,7 @@ determinante :: Matriz -> Maybe Double
 
 Recebe uma matriz do tipo algébrico Matriz. 
 Verifica se a matriz é quadrada. 
-Calcula o determinante utilizando (????)
+Calcula o determinante utilizando expansão de Laplace.
 Retorna Just Double com o valor do determinante ou Nothing se a matriz não for quadrada.
 
 ```haskell
