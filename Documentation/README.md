@@ -166,7 +166,6 @@ Retorna o valor do tamanho da curva. <br/>
 
 ### Especialista 4: Algoritmos e Estruturas de Dados
 
-
 ```haskell
 quickSort :: (Ord a) => [a] -> [a]
 ```
@@ -175,7 +174,6 @@ Verifica se a lista está vazia; se não, seleciona o primeiro elemento como piv
 Divide os elementos restantes em duas listas: menores ou iguais ao pivô e maiores que o pivô. <br/>
 Aplica recursivamente o QuickSort em cada sublista. <br/>
 Devolve uma lista ordenada do mesmo tipo ([a]) em ordem crescente.  <br/>
-
 
 ```haskell
 mergeSort :: (Ord a) => [a] -> [a]
@@ -195,6 +193,20 @@ Verifica se a lista está vazia; se sim, retorna a lista como está. <br/>
 Caso contrário, pega o primeiro elemento (x) e aplica recursivamente o InsertionSort no restante da lista. <br/>
 Insere o elemento x na posição correta da lista ordenada usando a função auxiliar insert. <br/>
 Devolve uma lista ordenada do mesmo tipo ([a]) em ordem crescente. <br/>
+
+```haskell
+ buscarProjeto :: Int -> [Projeto] -> Maybe Projeto
+```
+Recebe um identificador do tipo 'Int' representando o ID do projeto a ser buscado. <br/>
+Recebe, na sequência, uma lista de projetos '[Projeto]'. <br/>
+Percorre a lista verificando se algum projeto possui o ID igual ao fornecido. <br/>
+Retorna 'Just Projeto' caso encontre o projeto correspondente. <br/>
+Retorna 'Nothing' caso nenhum projeto com o ID informado seja encontrado. <br/>
+
+```haskell
+inserirOrdenado :: (Ord a) => a -> [a] -> [a]
+```
+
 
 ### Engenharia Civil
 
