@@ -8,8 +8,9 @@ Para compilar e executar este projeto, você precisará do seguinte:
 
 1.  **GHC (The Glasgow Haskell Compiler)**
 2.  **Cabal (Haskell build tool)**
+3.  Git
 
-A maneira mais fácil e recomendada de instalar e gerenciar as versões do GHC e do Cabal é através do **[GHCup](https://www.ghcup.haskell.org/)**. Siga as instruções no site oficial para instalá-lo no seu sistema.
+A maneira mais fácil e recomendada de instalar e gerenciar as versões do GHC e do Cabal é através do **[GHCup](https://www.ghcup.haskell.org/)**. Siga as instruções no site oficial para instalá-lo no seu sistema. Para realizar a intalção do Git siga o **[Guia de intalçao do Git](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git)**
 
 ## Instalação
 
