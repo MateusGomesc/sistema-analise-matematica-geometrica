@@ -3,6 +3,11 @@ module Reports where
 import Types
 import Data.Time.Calendar
 
+calcularCustoTotal :: Projeto -> Custo
+calcularCustoTotal projeto =
+  sum [custo m * quantidade m | m <- materiais projeto]
+
+
 formatarMaterial :: Material -> String
 formatarMaterial mat =
   "  - " ++ nomeMaterial mat
