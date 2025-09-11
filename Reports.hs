@@ -117,6 +117,29 @@ compararLinha atributo val1 val2
   | otherwise = atributo ++ " : " ++ val1 ++ " vs " ++ val2 ++
       if val1 == val2 then " (Iguais)" else " (Diferentes)"
       
+  compararProjetos :: Projeto -> Projeto -> String
+compararProjetos p1 p2
+  | p1 == p2 = 
+  | otherwise =
+      unlines
+        [ "=========================================="
+        , "      COMPARAÇÃO DE PROJETOS"
+        , "=========================================="
+        , compararLinha "ID" (show $ idProjeto p1) (show $ idProjeto p2)
+        , compararLinha "Nome" (nomeProjeto p1) (nomeProjeto p2)
+        , compararLinha "Tipo" (show $ tipoProjeto p1) (show $ tipoProjeto p2)
+        , compararLinha "Status" (show $ statusProjeto p1) (show $ statusProjeto p2)
+        , compararLinha "Orçamento" ("R$ " ++ show (orcamento p1)) ("R$ " ++ show (orcamento p2))
+        , compararLinha "Data de Início" (show $ dataInicio p1) (show $ dataInicio p2)
+        , compararLinha "Data de Fim" (showMaybeData $ dataFim p1) (showMaybeData $ dataFim p2)
+        , ""
+        , "-- Detalhes de Complexidade --"
+        , compararLinha "Nº de Materiais" (show $ length $ materiais p1) (show $ length $ materiais p2)
+        , compararLinha "Nº de Cálculos" (show $ length $ calculos p1) (show $ length $ calculos p2)
+        , compararLinha "Nº de Funções" (show $ length $ funcoes p1) (show $ length $ funcoes p2)
+        , "=========================================="
+        ]
+    
 estatisticasBasicas :: [Double] -> (Double, Double, Double)
 estatisticasBasicas [] = (0, 0, 0)
 estatisticasBasicas xs = (media, maximo, minimo)
