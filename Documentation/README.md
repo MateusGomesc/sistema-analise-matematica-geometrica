@@ -372,9 +372,16 @@ Utiliza das funções anteriores para verificar cada atributo do projeto e monta
 Devolve uma string que representa o relatório de comparação dos dois projetos recebidos.<br/>
 
 ```haskell
+estatisticasBasicas :: [Double] -> (Double, Double, Double)
+```
+Recebe uma lista de números reais ([Double]). <br/>
+Calcula três estatísticas básicas sobre os elementos da lista: Média, Máximo e Mínimo. <br/>
+Retorna uma tripla com os três valores calculados no formato (Média, Máximo, Mínimo). <br/>
+Retorna (0, 0, 0) como valor padrão se a lista estiver vazia. <br/>
+
+```haskell
 contarPorTipo :: [Projeto] -> [(TipoProjeto, Int)]
 ```
-
 Recebe uma lista de Projetos (tipos álgebricos Projeto). <br/>
 Verifica o campo tipoProjeto de cada projeto e conta quantas ocorrências existem de cada tipo (Civil, Mecanica, Eletrica, Estrutural). <br/>
 Filtra os resultados para incluir apenas os tipos que possuem pelo menos um projeto associado. <br/>
@@ -383,7 +390,6 @@ Retorn uma lista de pares (TipoProjeto, Int) representando a quantidade de proje
 ```haskell
 projetosEmAtraso :: [Projeto] -> Day -> [Projeto]
 ```
-
 Recebe uma lista de projetos e uma data de referência (Day). <br/>
 Para cada Projeto, verifica se possui uma data de fim definida (Just fim), se ainda não foi concluído (status /= Concluido) e se a data de fim já passou em relação à data atual (fim < dataAtual). Projetos sem data de fim (Nothing) são ignorados.<br/>
 Retorna uma lista contendo os projetos que estão em atraso. <br/>
