@@ -345,7 +345,7 @@ Verifica se o atributo é igual ou diferente nos dois projetos e monta uma strin
 Devolve uma string formatada da linha do atributo <br/>
 
 ```haskell
-compararLinha :: String -> String -> String -> String
+compararOrcamento :: Float -> Float -> String
 ```
 Recebe dois valores de orçamento (Float) representando os custos de dois projetos. <br/>
 Converte cada valor em string no formato monetário com o prefixo "R$". <br/>
