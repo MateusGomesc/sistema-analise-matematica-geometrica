@@ -81,14 +81,14 @@ compararLinha atributo val1 val2 =
   in
     attrPad ++ ": " ++ val1 ++ " vs " ++ val2 ++ indicador
     
-compararOrcamento :: Float -> Float -> String
+compararOrcamento :: Double -> Double -> String
 compararOrcamento o1 o2 =
   let s1 = "R$ " ++ show o1
       s2 = "R$ " ++ show o2
       comparacao
-        | o1 == o2 = " (Iguais)"
-        | o1 > o2  = " (Maior que o outro)"
-        | otherwise = " (Menor que o outro)"
+        | o1 == o2 = " ( Iguais )"
+        | o1 > o2  = " ( maior que o outro )"
+        | otherwise = " ( menor que o outro )"
   in "Orçamento           : " ++ s1 ++ " vs " ++ s2 ++ comparacao
   
 compararProjetos :: Projeto -> Projeto -> String
@@ -103,14 +103,15 @@ compararProjetos p1 p2
         , compararLinha "Nome" (nomeProjeto p1) (nomeProjeto p2)
         , compararLinha "Tipo" (show $ tipoProjeto p1) (show $ tipoProjeto p2)
         , compararLinha "Status" (show $ statusProjeto p1) (show $ statusProjeto p2)
-        , compararLinha "Orçamento" (printf "%.2f" $ orcamento p1) (printf "%.2f" $ orcamento p2)
+        , compararOrcamento (orcamento p1) (orcamento p2) -- (printf "%.2f" $ orcamento p1) (printf "%.2f" $ orcamento p2)
         , compararLinha "Data de Início" (show $ dataInicio p1) (show $ dataInicio p2)
         , compararLinha "Data de Fim" (showMaybeData $ dataFim p1) (showMaybeData $ dataFim p2)
         , ""
         , "-- Detalhes de Complexidade --"
-        , compararLinha "Nº de Materiais" (show $ length $ materiais p1) (show $ length $ materiais p2)
+        , compararLinha "Nº de material" (show $ length $ materiais p1) (show $ length $ materiais p2)
         , compararLinha "Nº de Cálculos" (show $ length $ calculos p1) (show $ length $ calculos p2)
         , compararLinha "Nº de Funções" (show $ length $ funcoes p1) (show $ length $ funcoes p2)
+        , compararLinha "Complexidade" "simples" "complexo"
         , "=========================================="
         ]
 

@@ -2,8 +2,6 @@ module Main where
 
 import System.Exit (exitFailure, exitSuccess)
 
--- IMPORTANTE: Adicione aqui os imports para TODOS os seus arquivos de teste
--- e as listas de testes que eles exportam.
 import Tests.AlgorithmsTests (testesEspecialista4)
 import Tests.CivilEngineeringTests (testesCivilEngineering)
 import Tests.ElectricalEngineeringTests (testesEngenhariaEletrica)
@@ -36,14 +34,6 @@ runTests :: [(String, Bool)] -> IO Int
 runTests allTests = do
     failureCodes <- mapM runTest allTests
     let totalFailures = sum failureCodes
-    let totalTests = length allTests
-    let totalPassed = totalTests - totalFailures
-    putStrLn "\n--------------------------------------"
-    putStrLn "RESUMO DOS TESTES:"
-    putStrLn $ "Total de Testes..: " ++ show totalTests
-    putStrLn $ "Testes que Passaram: " ++ show totalPassed
-    putStrLn $ "Testes que Falharam: " ++ show totalFailures
-    putStrLn "--------------------------------------"
     if totalFailures == 0
         then putStrLn "Todos os testes passaram com sucesso!"
         else putStrLn "Alguns testes falharam."
