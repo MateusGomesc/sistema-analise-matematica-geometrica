@@ -99,7 +99,7 @@ compararOrcamento o1 o2 =
   
 compararProjetos :: Projeto -> Projeto -> String
 compararProjetos p1 p2
-  | p1 == p2 = 
+  | p1 == p2 = "São iguais"
   | otherwise =
       unlines
         [ "=========================================="
