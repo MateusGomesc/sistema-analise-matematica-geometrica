@@ -19,6 +19,140 @@ Descrição...
 
 ## Funções
 
+### Especialista 1 : Geometria Analítica e Computacional
+
+```haskell
+ distanciaEntrePontos :: Ponto2D -> Ponto2D -> Distancia
+```
+
+ Recebe dois pontos 2D representados pelo tipo Ponto2D.<br/>
+ Calcula a distância euclidiana entre os dois pontos.<br/>
+ Devolve um valor do tipo Distancia (Double) representando a distância entre os pontos.<br/>
+
+```haskell
+distancia3D :: Ponto3D -> Ponto3D -> Distancia
+```
+
+Recebe dois pontos 3D representados pelo tipo Ponto3D.<br/> 
+Calcula a distância euclidiana entre os dois pontos no espaço 3D.
+<br/> Devolve um valor do tipo Distancia (Double) representando a distância entre os pontos.<br/>
+
+```haskell
+pontoMedio :: Ponto2D -> Ponto2D -> Ponto2D
+```
+Recebe dois pontos 2D representados pelo tipo Ponto2D.<br/>
+Calcula o ponto médio entre os dois pontos.<br/>
+Devolve um Ponto2D representando o ponto médio.<br/>
+
+```haskell
+ calcularArea :: Figura -> Area
+```
+Recebe um tipo algebrico Figura representando a figura desejada.<br/>
+Verifica qual figura está sendo recebida (Retangulo, Circulo, Triangulo, Poligono, Cilindro, Esfera, Paralelepipedo)<br/>
+Calcula a área correspondente de acordo com a figura.<br/>
+Devolve um valor do tipo Area (Double) representando a área calculada.<br/>
+
+```haskell
+calcularPerimetro :: Figura -> Perimetro
+```
+Recebe uma figura geométrica representada pelo tipo algébrico Figura.<br/>
+Verifica o tipo da figura (retângulo, círculo, triângulo, polígono) e aplica a fórmula adequada para calcular o perímetro.<br/>
+Devolve um valor do tipo Perimetro representando o perímetro da figura.<br/>
+
+```haskell
+calcularVolume :: Figura -> Volume
+```
+Recebe uma figura tridimensional representada pelo tipo algébrico Figura.<br/>
+Verifica o tipo da figura (esfera, cilindro, paralelepípedo) e aplica a fórmula de volume correspondente.<br/>
+Devolve um valor do tipo Volume representando o volume da figura.<br/>
+
+```haskell
+intersecaoRetas :: (Ponto2D, Ponto2D) -> (Ponto2D, Ponto2D) -> Maybe Ponto2D
+```
+Recebe duas retas, cada uma representada por um par de pontos bidimensionais (Ponto2D).<br/>
+Verifica se as retas são coincidentes, paralelas ou se possuem um ponto de interseção único.<br/>
+Devolve Nothing caso não haja ponto único de interseção, ou Just Ponto2D quando existe.<br/>
+
+
+### Especialista 2: Álgebra Linear e Operações com Matrizes
+
+```haskell
+somarMatrizes :: Matriz -> Matriz -> Maybe Matriz
+```
+
+Recebe duas matrizes do tipo algébrico Matriz. <br/>
+Verifica se ambas possuem as mesmas dimensões. <br/>
+Realiza a soma elemento a elemento entre as duas matrizes. <br/>
+Retorna Just Matriz com o resultado da soma ou Nothing se forem incompatíveis. <br/>
+
+```haskell
+dimensoesIguais :: [[Double]] -> [[Double]] -> Bool
+```
+
+Recebe duas listas de listas de Double representando matrizes. <br/>
+Verifica se ambas possuem o mesmo número de linhas e colunas. <br/>
+Retorna True se forem compatíveis ou False caso contrário.<br/>
+
+```haskell
+multiplicarMatrizes :: Matriz -> Matriz -> Maybe Matriz
+```
+
+Recebe duas matrizes do tipo algébrico Matriz. <br/>
+Verifica se o número de colunas da primeira é igual ao número de linhas da segunda. <br/>
+Realiza a multiplicação matricial utilizando transposição e produto escalar. <br/>
+Retorna Just Matriz com o resultado ou Nothing se forem incompatíveis. <br/>
+
+```haskell
+transpostaMatriz :: Matriz -> Matriz
+```
+
+Recebe uma matriz do tipo algébrico Matriz. <br/>
+Aplica a transposição da matriz, trocando linhas por colunas. <br/>
+Retorna uma nova Matriz transposta.<br/>
+
+```haskell
+determinante :: Matriz -> Maybe Double
+```
+
+Recebe uma matriz do tipo algébrico Matriz. <br/>
+Verifica se a matriz é quadrada. <br/>
+Calcula o determinante utilizando expansão de Laplace.<br/>
+Retorna Just Double com o valor do determinante ou Nothing se a matriz não for quadrada. <br/>
+
+```haskell
+resolverSistemaLinear :: Matriz -> Vetor -> Maybe Vetor
+```
+
+Recebe uma matriz quadrada do tipo Matriz e um vetor de termos independentes do tipo Vetor. <br/>
+Verifica se o sistema é compatível e se a matriz é invertível. <br/>
+Resolve o sistema linear utilizando o método de Cramer. <br/>
+Retorna Just Vetor com a solução ou Nothing se não houver solução única. <br/>
+
+```haskell
+produtoEscalar :: Vetor -> Vetor -> Maybe Double
+```
+
+Recebe dois vetores do tipo algébrico Vetor. <br/>
+Verifica se os vetores possuem o mesmo tamanho. <br/>
+Calcula o produto escalar entre os dois vetores. <br/>
+Retorna Just Double com o resultado ou Nothing se forem incompatíveis. <br/>
+
+```haskell
+normaVetor :: Vetor -> Double
+```
+
+Recebe um vetor do tipo algébrico Vetor. <br/>
+Calcula a norma do vetor (comprimento). <br/>
+Retorna um Double representando a norma. <br/>
+
+```haskell
+anguloEntreVetores :: Vetor -> Vetor -> Maybe Angulo
+```
+
+Recebe dois vetores do tipo algébrico Vetor. <br/>
+Verifica se os vetores são compatíveis e não nulos. <br/>
+Calcula o ângulo entre os vetores usando produto escalar e norma. <br/>
+Retorna Just Angulo em radianos ou Nothing se não for possível calcular. <br/>
 
 ### Especialista 3: Cálculo Diferencial e Integral
 
@@ -87,7 +221,6 @@ Retorna o valor do tamanho da curva. <br/>
 
 ### Especialista 4: Algoritmos e Estruturas de Dados
 
-
 ```haskell
 quickSort :: (Ord a) => [a] -> [a]
 ```
@@ -96,7 +229,6 @@ Verifica se a lista está vazia; se não, seleciona o primeiro elemento como piv
 Divide os elementos restantes em duas listas: menores ou iguais ao pivô e maiores que o pivô. <br/>
 Aplica recursivamente o QuickSort em cada sublista. <br/>
 Devolve uma lista ordenada do mesmo tipo ([a]) em ordem crescente.  <br/>
-
 
 ```haskell
 mergeSort :: (Ord a) => [a] -> [a]
@@ -117,7 +249,91 @@ Caso contrário, pega o primeiro elemento (x) e aplica recursivamente o Insertio
 Insere o elemento x na posição correta da lista ordenada usando a função auxiliar insert. <br/>
 Devolve uma lista ordenada do mesmo tipo ([a]) em ordem crescente. <br/>
 
+```haskell
+ buscarProjeto :: Int -> [Projeto] -> Maybe Projeto
+```
+Recebe um identificador do tipo 'Int' representando o ID do projeto a ser buscado. <br/>
+Recebe, na sequência, uma lista de projetos '[Projeto]'. <br/>
+Percorre a lista verificando se algum projeto possui o ID igual ao fornecido. <br/>
+Retorna 'Just Projeto' caso encontre o projeto correspondente. <br/>
+Retorna 'Nothing' caso nenhum projeto com o ID informado seja encontrado. <br/>
+
+```haskell
+inserirOrdenado :: (Ord a) => a -> [a] -> [a]
+```
+Recebe um elemento do tipo 'a' que implementa a classe 'Ord', representando o valor a ser inserido. <br/>
+Recebe, na sequência, uma lista ordenada de elementos do tipo '[a]'. <br/>
+Percorre a lista para encontrar a posição correta onde o elemento deve ser inserido, mantendo a ordenação da lista. <br/>
+Retorna uma nova lista do tipo '[a]' com o elemento inserido na posição correta. <br/>
+
+```haskell
+inserir :: (Ord a) => a -> ArvoreBinaria a -> ArvoreBinaria a
+```
+Recebe um elemento do tipo 'a' que implementa a classe 'Ord', representando o valor a ser inserido. <br/>
+Recebe, na sequência, uma árvore binária de busca do tipo 'ArvoreBinaria a'. <br/>
+Insere o elemento na posição correta da árvore, mantendo a propriedade da árvore binária de busca. <br/>
+Retorna uma nova árvore do tipo 'ArvoreBinaria a' com o elemento inserido. <br/>
+ 
+```haskell
+construirArvore :: (Ord a) => [a] -> ArvoreBinaria a
+```
+Recebe uma lista de elementos do tipo 'a' que implementa a classe 'Ord'. <br/>
+Percorre a lista inserindo cada elemento em uma árvore binária de busca vazia, utilizando a função 'inserir'. <br/>
+Retorna uma árvore binária de busca do tipo 'ArvoreBinaria a' contendo todos os elementos da lista. <br/>
+ 
+```haskell
+buscarArvore :: (Ord a) => a -> ArvoreBinaria a -> Bool
+```
+Recebe um elemento do tipo 'a' que implementa a classe 'Ord', representando o valor a ser buscado. <br/>
+Recebe, na sequência, uma árvore binária de busca do tipo 'ArvoreBinaria a'. <br/>
+Percorre a árvore verificando se o elemento está presente, comparando com os valores dos nós e seguindo a propriedade da árvore binária de busca. <br/>
+Retorna 'True' se o elemento for encontrado na árvore. <br/>
+Retorna 'False' caso contrário. <br/>
+ 
+```haskell
+filtrarProjetos :: (Projeto -> Bool) -> [Projeto] -> [Projeto]
+```
+Recebe uma função do tipo 'Projeto -> Bool' que representa o critério de filtragem.  <br/>
+Recebe, na sequência, uma lista de projetos '[Projeto]'.  <br/>
+Percorre a lista aplicando a função de filtragem a cada projeto.  <br/>
+Retorna uma nova lista contendo apenas os projetos que satisfazem o critério (para os quais a função retorna 'True').  <br/>
+
+### Engenharia Civil
+
+```haskell
+volumeConcreto :: Figura -> Volume
+```
+
+Recebe uma figura geométrica do tipo algébrico Figura. <br/>
+Verifica qual tipo de figura foi recebida. <br/>
+Calcula o volume de concreto necessário com base na fórmula da figura. <br/>
+Retorna um Volume em metros cúbicos. <br/>
+
 ### Engenharia Mecânica
+
+```haskell
+calcularTorque :: Forca -> Distancia -> Angulo -> Torque
+```
+
+Recebe uma força (Forca), uma distância (Distancia) e um ângulo (Angulo). <br/>
+Aplica a fórmula do torque: τ = F · r · sin(θ). <br/>
+Retorna um Torque em Newton-metro. <br/>
+
+```haskell
+velocidadeAngular :: Velocidade -> Raio -> VelocidadeAngular
+```
+
+Recebe uma velocidade linear (Velocidade) e um raio (Raio). <br/>
+Aplica a fórmula da velocidade angular: ω = v / r. <br/>
+Retorna uma VelocidadeAngular em rad/s. Retorna 0 se o raio for nulo. <br/>
+
+```haskell
+aceleracaocentripeta :: Velocidade -> Raio -> Aceleracao
+```
+
+Recebe uma velocidade tangencial (Velocidade) e um raio (Raio). <br/>
+Aplica a fórmula da aceleração centrípeta: a = v² / r. <br/>
+Retorna uma Aceleracao em m/s². Retorna 0 se o raio for nulo. <br/>
 
 ```haskell
 energiaCinetica :: Massa-> Velocidade-> Energia
