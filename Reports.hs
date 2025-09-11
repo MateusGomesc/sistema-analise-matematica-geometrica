@@ -4,9 +4,13 @@ import Types
 import Data.Time.Calendar
 import Text.Printf (printf)
 
+
+
+
 calcularCustoTotal :: Projeto -> Custo
 calcularCustoTotal projeto =
-  sum [custo m * quantidade m | m <- materiais projeto]
+    sum $ map (\m -> custo m * quantidade m) (materiais projeto)
+
 
 
 formatarMaterial :: Material -> String
