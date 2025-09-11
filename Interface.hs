@@ -27,10 +27,10 @@ exibirOpções opções = do
     putStrLn ""
 
 lerOpção :: Int -> Int -> IO Int
-lerOpção min max = do
+lerOpção minimo maximo = do
     putStr "Escolha uma opção: "
     opção <- readLn
-    valida opção min max
+    valida opção minimo maximo
 
 menu :: [String] -> IO Int
 menu texto = do exibirOpções texto
@@ -44,13 +44,16 @@ imprimirResultado msg res = do
     putStrLn "----------------------------------------------------"
     putStrLn ""
 
-laçoMenuPrincipal :: IO ()
-laçoMenuPrincipal = do
+lacoMenuPrincipal :: IO ()
+lacoMenuPrincipal = do
     opção <- menu ["1 - Módulos do Núcleo", "2 - Módulos de Engenharia", "0 - Sair"]
     case opção of
         1 -> laçoMenuEspecialistas
         2 -> laçoMenuEngenharias
         0 -> return ()
+        _ -> do
+            putStrLn "Opção Inválida!"
+            lacoMenuPrincipal
 
 laçoMenuEspecialistas :: IO ()
 laçoMenuEspecialistas = do
@@ -68,7 +71,10 @@ laçoMenuEspecialistas = do
         3 -> laçoMenuCalculo
         4 -> laçoMenuAED
         5 -> laçoMenuVal
-        0 -> laçoMenuPrincipal
+        0 -> lacoMenuPrincipal
+        _ -> do
+            putStrLn "Opção Inválida!"
+            laçoMenuEspecialistas
 
 laçoMenuGA :: IO ()
 laçoMenuGA = do
@@ -87,41 +93,44 @@ laçoMenuGA = do
         1 -> do
             ponto1 <- prompt "Ponto 1: "
             ponto2 <- prompt "Ponto 2: "
-            let resultado = distanciaEntrePontos ponto1 ponto2
-            imprimirResultado "Resultado: " resultado
+            let res = distanciaEntrePontos ponto1 ponto2
+            imprimirResultado "Resultado: " res
         2 -> do
             ponto1 <- prompt "Ponto 1: "
             ponto2 <- prompt "Ponto 2: "
-            let resultado = distancia3D ponto1 ponto2
-            imprimirResultado "Resultado: " resultado
+            let res = distancia3D ponto1 ponto2
+            imprimirResultado "Resultado: " res
         3 -> do
             ponto1 <- prompt "Ponto 1: "
             ponto2 <- prompt "Ponto 2: "
-            let resultado = pontoMedio ponto1 ponto2
-            imprimirResultado "Resultado: " resultado
+            let res = pontoMedio ponto1 ponto2
+            imprimirResultado "Resultado: " res
         4 -> do
             figura <- prompt "Figura: "
-            let resultado = calcularArea figura
-            imprimirResultado "Resultado: " resultado
+            let res = calcularArea figura
+            imprimirResultado "Resultado: " res
         5 -> do
             figura <- prompt "Figura: "
-            let resultado = calcularPerimetro figura
-            imprimirResultado "Resultado: " resultado
+            let res = calcularPerimetro figura
+            imprimirResultado "Resultado: " res
         6 -> do
             figura <- prompt "Figura: "
-            let resultado = calcularVolume figura
-            imprimirResultado "Resultado: " resultado
+            let res = calcularVolume figura
+            imprimirResultado "Resultado: " res
         7 -> do
             ponto <- prompt "Ponto: "
             pontos <- prompt "Pontos: "
-            let resultado = dentroDoPoligono ponto pontos
-            imprimirResultado "Resultado: " resultado
+            let res = dentroDoPoligono ponto pontos
+            imprimirResultado "Resultado: " res
         8 -> do
             reta1 <- prompt "Reta 1: "
             reta2 <- prompt "Reta 2: "
-            let resultado = intersecaoRetas reta1 reta2
-            imprimirResultado "Resultado: " resultado
+            let res = intersecaoRetas reta1 reta2
+            imprimirResultado "Resultado: " res
         0 -> laçoMenuEspecialistas
+        _ -> do
+            putStrLn "Opção Inválida!"
+            laçoMenuGA
 
 laçoMenuAL :: IO ()
 laçoMenuAL = do
@@ -140,41 +149,44 @@ laçoMenuAL = do
         1 -> do
             matriz1 <- prompt "Matriz 1: "
             matriz2 <- prompt "Matriz 2: "
-            let resultado = somarMatrizes matriz1 matriz2
-            imprimirResultado "Resultado: " resultado
+            let res = somarMatrizes matriz1 matriz2
+            imprimirResultado "Resultado: " res
         2 -> do
             matriz1 <- prompt "Matriz 1: "
             matriz2 <- prompt "Matriz 2: "
-            let resultado = multiplicarMatrizes matriz1 matriz2
-            imprimirResultado "Resultado: " resultado
+            let res = multiplicarMatrizes matriz1 matriz2
+            imprimirResultado "Resultado: " res
         3 -> do
             matriz <- prompt "Matriz: "
-            let resultado = transpostaMatriz matriz
-            imprimirResultado "Resultado: " resultado
+            let res = transpostaMatriz matriz
+            imprimirResultado "Resultado: " res
         4 -> do
             matriz <- prompt "Matriz: "
-            let resultado = determinante matriz
-            imprimirResultado "Resultado: " resultado
+            let res = determinante matriz
+            imprimirResultado "Resultado: " res
         5 -> do
             matriz <- prompt "Matriz: "
             vetor <- prompt "Vetor: "
-            let resultado = resolverSistemaLinear matriz vetor
-            imprimirResultado "Resultado: " resultado
+            let res = resolverSistemaLinear matriz vetor
+            imprimirResultado "Resultado: " res
         6 -> do
             vetor1 <- prompt "Vetor: "
             vetor2 <- prompt "Vetor: "
-            let resultado = produtoEscalar vetor1 vetor2
-            imprimirResultado "Resultado: " resultado
+            let res = produtoEscalar vetor1 vetor2
+            imprimirResultado "Resultado: " res
         7 -> do
             vetor <- prompt "Vetor: "
-            let resultado =normaVetor vetor
-            imprimirResultado "Resultado: " resultado
+            let res =normaVetor vetor
+            imprimirResultado "Resultado: " res
         8 -> do
             vetor1 <- prompt "Vetor: "
             vetor2 <- prompt "Vetor: "
-            let resultado = anguloEntreVetores vetor1 vetor2
-            imprimirResultado "Resultado: " resultado
+            let res = anguloEntreVetores vetor1 vetor2
+            imprimirResultado "Resultado: " res
         0 -> laçoMenuEspecialistas
+        _ -> do
+            putStrLn "Opção Inválida!"
+            laçoMenuAL
 
 laçoMenuCalculo :: IO ()
 laçoMenuCalculo = do
@@ -192,45 +204,48 @@ laçoMenuCalculo = do
         1 -> do
             função <- prompt "Função: "
             x <- prompt "Valor de x: "
-            let resultado = avaliarFuncao função x
-            imprimirResultado "Resultado: " resultado
+            let res = avaliarFuncao função x
+            imprimirResultado "Resultado: " res
         2 -> do
             função <- prompt "Função: "
             x <- prompt "Ponto da derivada: "
-            let resultado = derivadaNumerica função x
-            imprimirResultado "Resultado: " resultado
+            let res = derivadaNumerica função x
+            imprimirResultado "Resultado: " res
         3 -> do
             função <- prompt "Função: "
             x1 <- prompt "Ínicio: "
             x2 <- prompt "Final: "
-            let resultado = integralNumerica função x1 x2 1000
-            imprimirResultado "Resultado: " resultado
+            let res = integralNumerica função x1 x2 1000
+            imprimirResultado "Resultado: " res
         4 -> do
             função <- prompt "Função: "
             x1 <- prompt "Ínicio: "
             x2 <- prompt "Final: "
-            let resultado = encontrarRaizes função x1 x2
-            imprimirResultado "Resultado: " resultado
+            let res = encontrarRaizes função x1 x2
+            imprimirResultado "Resultado: " res
         5 -> do
             função <- prompt "Função: "
             x1 <- prompt "Ínicio: "
             x2 <- prompt "Final: "
-            let resultado = encontrarMaximo função x1 x2
-            imprimirResultado "Resultado: " resultado
+            let res = encontrarMaximo função x1 x2
+            imprimirResultado "Resultado: " res
         6 -> do
             função <- prompt "Função: "
             x1 <- prompt "Ínicio: "
             x2 <- prompt "Final: "
-            let resultado = encontrarMinimo função x1 x2
-            imprimirResultado "Resultado: " resultado
+            let res = encontrarMinimo função x1 x2
+            imprimirResultado "Resultado: " res
         7 -> do
             função <- prompt "Função: "
             x1 <- prompt "Ínicio: "
             x2 <- prompt "Final: "
-            let resultado = calcularComprimentoCurva função x1 x2
-            imprimirResultado "Resultado: " resultado
+            let res = calcularComprimentoCurva função x1 x2
+            imprimirResultado "Resultado: " res
         0 -> laçoMenuEspecialistas
-    laçoMenuCalculo
+        _ -> do
+            putStrLn "Opção Inválida!"
+            laçoMenuCalculo
+
 
 laçoMenuAED :: IO ()
 laçoMenuAED = do
@@ -248,40 +263,43 @@ laçoMenuAED = do
     case opção of
         1 -> do
             lista :: [Double] <- prompt "Lista: "
-            let resultado = quickSort lista
-            imprimirResultado "Resultado: " resultado
+            let res = quickSort lista
+            imprimirResultado "Resultado: " res
         2 -> do
             lista :: [Double] <- prompt "Lista: "
-            let resultado = mergeSort lista
-            imprimirResultado "Resultado: " resultado
+            let res = mergeSort lista
+            imprimirResultado "Resultado: " res
         3 -> do
             lista :: [Double] <- prompt "Lista: "
-            let resultado = insertionSort lista
-            imprimirResultado "Resultado: " resultado
+            let res = insertionSort lista
+            imprimirResultado "Resultado: " res
         4 -> do
-            id <- prompt "Id do projeto: "
+            idProj <- prompt "Id do projeto: "
             listaDeProjetos :: [Projeto] <- prompt "Lista de projetos: "
-            let resultado = buscarProjeto id listaDeProjetos
-            imprimirResultado "Resultado: " resultado
+            let res = buscarProjeto idProj listaDeProjetos
+            imprimirResultado "Resultado: " res
         5 -> do
             elemento <- prompt "Elemento: "
             lista :: [Double] <- prompt "Lista: "
-            let resultado = inserirOrdenado elemento lista
-            imprimirResultado "Resultado: " resultado
+            let res = inserirOrdenado elemento lista
+            imprimirResultado "Resultado: " res
         6 -> do
             vetor :: [Double] <- prompt "Vetor: "
-            let resultado = construirArvore vetor
-            imprimirResultado "Resultado: " resultado
+            let res = construirArvore vetor
+            imprimirResultado "Resultado: " res
         7 -> do
             elemento :: Double <- prompt "Elemento: "
             árvore :: ArvoreBinaria Double <- prompt "Árvore: "
-            let resultado = buscarArvore elemento árvore
-            imprimirResultado "Resultado: " resultado
+            let res = buscarArvore elemento árvore
+            imprimirResultado "Resultado: " res
         8 -> do
             listaDeProjetos :: [Projeto] <- prompt "Lista de projetos: "
-            let resultado = filtrarProjetos (\p -> tipoProjeto p == Civil) listaDeProjetos
-            imprimirResultado "Resultado: " resultado
+            let res = filtrarProjetos (\p -> tipoProjeto p == Civil) listaDeProjetos
+            imprimirResultado "Resultado: " res
         0 -> laçoMenuEspecialistas
+        _ -> do
+            putStrLn "Opção Inválida!"
+            laçoMenuAED
 
 laçoMenuVal :: IO ()
 laçoMenuVal = do
@@ -307,17 +325,23 @@ laçoMenuVal = do
             projeto1 <- prompt "Projeto 1: "
             projeto2 <- prompt "Projeto 2: "
             putStrLn (compararProjetos projeto1 projeto2)
-        5 -> return ()
+        5 -> do
+            valores :: [Double] <- prompt "Valores: "
+            let res = estatisticasBasicas valores
+            imprimirResultado "Resultado: " res
         6 -> do
             projetos :: [Projeto] <- prompt "Lista de projetos: "
-            let resultado = contarPorTipo projetos
-            imprimirResultado "Resultado: " resultado
+            let res = contarPorTipo projetos
+            imprimirResultado "Resultado: " res
         7 -> do
             projetos :: [Projeto] <- prompt "Lista de projetos: "
             dataLimite <- prompt "Data limite: "
-            let resultado = projetosEmAtraso projetos dataLimite
-            imprimirResultado "Resultado: " resultado
+            let res = projetosEmAtraso projetos dataLimite
+            imprimirResultado "Resultado: " res
         0 -> laçoMenuEspecialistas
+        _ -> do
+            putStrLn "Opção Inválida!"
+            laçoMenuVal
 
 laçoMenuEngenharias :: IO ()
 laçoMenuEngenharias = do
@@ -331,7 +355,10 @@ laçoMenuEngenharias = do
         1 -> laçoMenuCivil
         2 -> laçoMenuMecânica
         3 -> laçoMenuElétrica
-        0 -> laçoMenuPrincipal
+        0 -> lacoMenuPrincipal
+        _ -> do
+            putStrLn "Opção Inválida!"
+            laçoMenuEngenharias
 
 laçoMenuCivil :: IO ()
 laçoMenuCivil = do
@@ -347,31 +374,34 @@ laçoMenuCivil = do
         1 -> do
             largura <- prompt "Largura: "
             altura <- prompt "Altura: "
-            let resultado = momentoInerciaRetangular largura altura
-            imprimirResultado "Resultado: " resultado
+            let res = momentoInerciaRetangular largura altura
+            imprimirResultado "Resultado: " res
         2 -> do
             força <- prompt "Força: "
             área <- prompt "Área: "
-            let resultado = tensaoNormal força área
-            imprimirResultado "Resultado: " resultado
+            let res = tensaoNormal força área
+            imprimirResultado "Resultado: " res
         3 -> do
             força <- prompt "Força: "
             comprimento <- prompt "Comprimento: "
             moduloElasticidade <- prompt "Modulo de elasticidade: "
             momentoInercia <- prompt "Momento de Ínercia: "
-            let resultado = deflexaoViga força comprimento moduloElasticidade momentoInercia
-            imprimirResultado "Resultado: " resultado
+            let res = deflexaoViga força comprimento moduloElasticidade momentoInercia
+            imprimirResultado "Resultado: " res
         4 -> do
             moduloElasticidade <- prompt "Modulo de elasticidade: "
             momentoInercia <- prompt "Momento de Ínercia: "
             comprimento <- prompt "Comprimento: "
-            let resultado = cargaCriticaEuler moduloElasticidade momentoInercia comprimento
-            imprimirResultado "Resultado: " resultado
+            let res = cargaCriticaEuler moduloElasticidade momentoInercia comprimento
+            imprimirResultado "Resultado: " res
         5 -> do
             figura <- prompt "Figura: "
-            let resultado = volumeConcreto figura
-            imprimirResultado "Resultado: " resultado
+            let res = volumeConcreto figura
+            imprimirResultado "Resultado: " res
         0 -> laçoMenuEngenharias
+        _ -> do
+            putStrLn "Opção Inválida!"
+            laçoMenuCivil
 
 laçoMenuMecânica :: IO ()
 laçoMenuMecânica = do
@@ -389,33 +419,36 @@ laçoMenuMecânica = do
             força <- prompt "Força: "
             distância <- prompt "Distância: "
             ângulo <- prompt "Ângulo: "
-            let resultado = calcularTorque força distância ângulo
-            imprimirResultado "Resultado: " resultado
+            let res = calcularTorque força distância ângulo
+            imprimirResultado "Resultado: " res
         2 -> do
             velocidade <- prompt "Velocidade: "
             raio <- prompt "Raio: "
-            let resultado = velocidadeAngular velocidade raio
-            imprimirResultado "Resultado: " resultado
+            let res = velocidadeAngular velocidade raio
+            imprimirResultado "Resultado: " res
         3 -> do
             velocidade <- prompt "Velocidade: "
             raio <- prompt "Raio: "
-            let resultado = aceleracaoCentripeta velocidade raio
-            imprimirResultado "Resultado: " resultado
+            let res = aceleracaoCentripeta velocidade raio
+            imprimirResultado "Resultado: " res
         4 -> do
             massa <- prompt "Massa: "
             velocidade <- prompt "Velocidade: "
-            let resultado = energiaCinetica massa velocidade
-            imprimirResultado "Resultado: " resultado
+            let res = energiaCinetica massa velocidade
+            imprimirResultado "Resultado: " res
         5 -> do
             massa <- prompt "Massa: "
             altura <- prompt "Altura: "
-            let resultado = energiaCinetica massa altura
-            imprimirResultado "Resultado: " resultado
+            let res = energiaCinetica massa altura
+            imprimirResultado "Resultado: " res
         6 -> do
             massa :: [(Massa, Distancia)] <- prompt "Massa: "
-            let resultado = centroMassaX massa
-            imprimirResultado "Resultado: " resultado
+            let res = centroMassaX massa
+            imprimirResultado "Resultado: " res
         0 -> laçoMenuEngenharias
+        _ -> do
+            putStrLn "Opção Inválida!"
+            laçoMenuMecânica
 
 laçoMenuElétrica :: IO ()
 laçoMenuElétrica = do
@@ -433,39 +466,42 @@ laçoMenuElétrica = do
                 ]
     case opção of
         1 -> do
-            resistencia <- prompt "Resitência: "
+            resist <- prompt "Resitência: "
             corrente <- prompt "Corrente: "
-            let resultado = tensaoOhm resistencia corrente
-            imprimirResultado "Resultado: " resultado
+            let res = tensaoOhm resist corrente
+            imprimirResultado "Resultado: " res
         2 -> return ()
         3 -> do
-            resistencia <- prompt "Resitência: "
+            resist <- prompt "Resitência: "
             corrente <- prompt "Corrente: "
-            let resultado = potenciaEletricaRI resistencia corrente
-            imprimirResultado "Resultado: " resultado
+            let res = potenciaEletricaRI resist corrente
+            imprimirResultado "Resultado: " res
         4 -> do
             tensão <- prompt "Tensão: "
-            resistencia <- prompt "Resitência: "
-            let resultado = potenciaEletricaVR tensão resistencia
-            imprimirResultado "Resultado: " resultado
+            resist <- prompt "Resitência: "
+            let res = potenciaEletricaVR tensão resist
+            imprimirResultado "Resultado: " res
         5 -> return ()
         6 -> do
             listaResistências <- prompt "Lista de Resistência: "
-            let resultado = resistenciaParalelo listaResistências
-            imprimirResultado "Resultado: " resultado
+            let res = resistenciaParalelo listaResistências
+            imprimirResultado "Resultado: " res
         7 -> do
             resistência <- prompt "Resistência: "
             reatencia <- prompt "Reatencia: "
-            let resultado = impedanciaAC resistência reatencia
-            imprimirResultado "Resultado: " resultado
+            let res = impedanciaAC resistência reatencia
+            imprimirResultado "Resultado: " res
         8 -> do
             raio <- prompt "Raio: "
             theta <- prompt "Theta: "
-            let resultado = polarParaRetangular raio theta
-            imprimirResultado "Resultado: " resultado
+            let res = polarParaRetangular raio theta
+            imprimirResultado "Resultado: " res
         9 -> do
             x <- prompt "X: "
             y <- prompt "Y: "
-            let resultado = retangularParaPolar x y
-            imprimirResultado "Resultado: " resultado
+            let res = retangularParaPolar x y
+            imprimirResultado "Resultado: " res
         0 -> laçoMenuEngenharias
+        _ -> do
+            putStrLn "Opção Inválida!"
+            laçoMenuElétrica

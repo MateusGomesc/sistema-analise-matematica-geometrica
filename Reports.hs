@@ -2,6 +2,7 @@ module Reports where
 
 import Types
 import Data.Time.Calendar
+import Text.Printf (printf)
 
 calcularCustoTotal :: Projeto -> Custo
 calcularCustoTotal projeto =
@@ -44,7 +45,7 @@ gerarRelatorioProjeto p =
         "Nome:          " ++ nomeProjeto p,
         "Tipo:          " ++ show (tipoProjeto p),
         "Status:        " ++ show (statusProjeto p),
-        "Orçamento:     R$ " ++ show (orcamento p),
+        "Orçamento:     R$ " ++ printf "%.2f" (orcamento p),
         ""
       ]
     datas =

@@ -2,31 +2,30 @@ cabal-version:      2.4
 name:               projeto-engenharia
 version:            1.0.0
 synopsis:           Sistema de análise matemática para engenharia
-author:             Grupo de Estudantes
+author:             Davi Cabeceira | Leornardo Pereira | Mateus Gomes | Yasmim Moreira
 maintainer:         grupo@email.com
 build-type:         Simple
 
 library
     hs-source-dirs:   .
     exposed-modules:
-        Types,
-        Geometry,
-        LinearAlgebra,
-        Calculus,
-        Algorithms,
-        DataStructures,
-        Validation,
-        Reports,
-        Interface,
-        Engineering.Civil,
-        Engineering.Mechanical,
-        Engineering.Electrical,
-        Engineering.All
+        Algorithms
+        Calculus
+        DataStructures
+        Engineering.Civil
+        Engineering.Electrical
+        Engineering.Mechanical
+        Geometry
+        Interface
+        LinearAlgebra
+        Reports
+        Types
+        Validation
     build-depends:
         base >= 4.14 && < 4.22,
         time >=1.9,
         containers >=0.6,
-        time
+        time,
     default-language: Haskell2010
     ghc-options:      -Wall -Wextra
 
@@ -35,7 +34,21 @@ executable projeto-engenharia
     hs-source-dirs:   .
     build-depends:
         base >= 4.14 && < 4.22,
-        projeto-engenharia
+        projeto-engenharia,
+        time
+    other-modules:
+        Algorithms
+        Calculus
+        DataStructures
+        Engineering.Civil
+        Engineering.Electrical
+        Engineering.Mechanical
+        Geometry
+        Interface
+        LinearAlgebra
+        Reports
+        Types
+        Validation
     default-language: Haskell2010
     ghc-options:      -Wall -Wextra -O2
 
@@ -48,4 +61,26 @@ test-suite tests
         projeto-engenharia,
         time,
         containers
+    other-modules:
+        Algorithms
+        Calculus
+        DataStructures
+        Engineering.Civil
+        Engineering.Electrical
+        Engineering.Mechanical
+        Geometry
+        Interface
+        LinearAlgebra
+        Reports
+        Types
+        Validation
+        Tests.AlgorithmsTests
+        Tests.CalculusTests
+        Tests.CivilEngineeringTests
+        Tests.ElectricalEngineeringTests
+        Tests.GeometryTests
+        Tests.LinearAlgebraTests
+        Tests.MechanicalEngineeringTests
+        Tests.SortingTests
+        Tests.ValidationTests
     default-language:   Haskell2010
