@@ -1,6 +1,8 @@
 module Main where
 
 import Interface
+import System.IO(stdout, hSetBuffering, BufferMode(NoBuffering))
 
-main = do
+main = do 
+    hSetBuffering stdout NoBuffering
     laçoMenuPrincipal

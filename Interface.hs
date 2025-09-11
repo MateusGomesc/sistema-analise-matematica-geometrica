@@ -1,7 +1,8 @@
+{-# LANGUAGE ScopedTypeVariables #-}
+
 module Interface where
 
 import Types
-import GHC.Classes
 import Validation
 import Calculus
 import Algorithms
