@@ -1,3 +1,7 @@
+module Geometry where
+
+import Types
+
 -- 1. Distância entre dois pontos 2D
 distanciaEntrePontos :: Ponto2D -> Ponto2D -> Distancia
 distanciaEntrePontos (Ponto2D x1 y1) (Ponto2D x2 y2) =

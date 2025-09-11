@@ -160,13 +160,13 @@ data CalculoMat = CalculoMat
 data Carga = CargaPontual Forca Ponto2D
     | CargaDistribuida Forca Comprimento -- for¸ca por metro
     | CargaTriangular Forca Forca Comprimento -- carga vari´avel
-    deriving (Show, Eq)
+    deriving (Show, Eq, Read)
 
 -- Tipo para propriedades de se¸c~oes
 data SecaoTransversal = SecaoRetangular Largura Altura
     | SecaoCircular Raio
     | SecaoI Altura Largura Espessura Espessura -- h, b, tw, tf
-    deriving (Show, Eq)
+    deriving (Show, Eq, Read)
 
 data ArvoreBinaria a = Vazia | No a (ArvoreBinaria a) (ArvoreBinaria a)
-    deriving (Show, Eq)
+    deriving (Show, Eq, Read)

@@ -15,7 +15,7 @@ Descrição...
 
 ## Diagrama hierárquico do menu
 
-
+<img src="diagrama.png" alt="Diagrama hierárquico do menu" />
 
 ## Funções
 
@@ -297,6 +297,58 @@ Recebe uma função do tipo 'Projeto -> Bool' que representa o critério de filt
 Recebe, na sequência, uma lista de projetos '[Projeto]'.  <br/>
 Percorre a lista aplicando a função de filtragem a cada projeto.  <br/>
 Retorna uma nova lista contendo apenas os projetos que satisfazem o critério (para os quais a função retorna 'True').  <br/>
+
+### Especialista 5: Validação, Relatórios e Interface
+
+```haskell
+formatarMaterial :: Material -> String
+```
+Recebe um tipo álgebrico Material  <br/>
+Concatena informações do material com separadores e labels informativos.  <br/>
+Retorna uma string formatada completa do material.  <br/>
+
+```haskell
+formatarCalculo :: CalculoMat -> String
+```
+Recebe um tipo álgebrico CalculoMat  <br/>
+Concatena informações do cálculo com separadores.<br/>
+Retorna uma string formatada completa do cálculo.  <br/>
+
+```haskell
+formatarFuncao :: Funcao -> String
+```
+Recebe um tipo álgebrico Funcao  <br/>
+Concatena ddescrição da função com separadores.<br/>
+Retorna uma string formatada completa da função.  <br/>
+
+```haskell
+gerarRelatorioProjeto :: Projeto -> [String]
+```
+Recebe um tipo álgebrico Projeto  <br/>
+Constroi diversas listas de string separando as listas por tópicos de acordo com as infromações e concatena todas no final gerando uma lista única.<br/>
+Retorna uma lista de strings com as informações.  <br/>
+
+```haskell
+compararLinha :: String -> String -> String -> String
+```
+Recebe uma string para representar qual atributo vai ser comparado.  <br/>
+Recebe duas strings na sequência com os valores a serem comparados. <br/>
+Verifica se o atributo é igual ou diferente nos dois projetos e monta uma string formatada do atributo.<br/>
+Devolve uma string formatada da linha do atributo <br/>
+
+```haskell
+showMaybeData :: Maybe Day -> String
+```
+Recebe um Maybe Data  <br/>
+Verifica se a data está definada ou não, se estiver converte para string<br/>
+Devolve uma string da data sem o Just <br/>
+
+```haskell
+compararProjetos :: Projeto -> Projeto -> String
+```
+Recebe dois tipos álgebricos Projeto.  <br/>
+Utiliza das funções anteriores para verificar cada atributo do projeto e monta um relatório.<br/>
+Devolve uma string que representa o relatório de comparação dos dois projetos recebidos.<br/>
 
 ### Engenharia Civil
 

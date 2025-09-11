@@ -2,8 +2,6 @@ module Engineering.Mechanical where
 
 import Types
 
-energiaCinetica :: Massa -> Velocidade-> Energia
-=======
 -- Engenharia Mecânica
 calcularTorque :: Forca -> Distancia -> Angulo -> Torque
 calcularTorque f r theta = f * r * sin theta

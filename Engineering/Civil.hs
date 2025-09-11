@@ -1,10 +1,6 @@
 module Engineering.Civil where
 
 import Types
-=======
-module Engineering.Civil where
-
-import Types
 
 volumeConcreto :: Figura -> Volume
 volumeConcreto (Paralelepipedo c l a) = c * l * a

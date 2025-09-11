@@ -6,6 +6,9 @@ import Validation
 import Calculus
 import Algorithms
 import LinearAlgebra
+import Geometry
+import DataStructures
+import Reports
 import Engineering.Civil
 import Engineering.Electrical
 import Engineering.Mechanical
@@ -80,75 +83,44 @@ laçoMenuGA = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> return ()
-        2 -> return ()
-        3 -> return ()
-        4 -> laçoMenuGAÁrea
-        5 -> laçoMenuGAPerimetro
-        6 -> laçoMenuGAVolume
-        7 -> return ()
-        8 -> return ()
+        1 -> do
+            ponto1 <- prompt "Ponto 1: "
+            ponto2 <- prompt "Ponto 2: "
+            let resultado = distanciaEntrePontos ponto1 ponto2
+            imprimirResultado "Resultado: " resultado
+        2 -> do
+            ponto1 <- prompt "Ponto 1: "
+            ponto2 <- prompt "Ponto 2: "
+            let resultado = distancia3D ponto1 ponto2
+            imprimirResultado "Resultado: " resultado
+        3 -> do
+            ponto1 <- prompt "Ponto 1: "
+            ponto2 <- prompt "Ponto 2: "
+            let resultado = pontoMedio ponto1 ponto2
+            imprimirResultado "Resultado: " resultado
+        4 -> do
+            figura <- prompt "Figura: "
+            let resultado = calcularArea figura
+            imprimirResultado "Resultado: " resultado
+        5 -> do
+            figura <- prompt "Figura: "
+            let resultado = calcularPerimetro figura
+            imprimirResultado "Resultado: " resultado
+        6 -> do
+            figura <- prompt "Figura: "
+            let resultado = calcularVolume figura
+            imprimirResultado "Resultado: " resultado
+        7 -> do
+            ponto <- prompt "Ponto: "
+            pontos <- prompt "Pontos: "
+            let resultado = dentroDoPoligono ponto pontos
+            imprimirResultado "Resultado: " resultado
+        8 -> do
+            reta1 <- prompt "Reta 1: "
+            reta2 <- prompt "Reta 2: "
+            let resultado = intersecaoRetas reta1 reta2
+            imprimirResultado "Resultado: " resultado
         0 -> laçoMenuEspecialistas
-
-laçoMenuGAÁrea :: IO ()
-laçoMenuGAÁrea = do
-    opção <- menu [
-                    "1 - Círculo", 
-                    "2 - Triangulo", 
-                    "3 - Poligono",
-                    "4 - Esfera",
-                    "5 - Cilíndro",
-                    "6 - Paralelepipedo",
-                    "0 - Voltar a tela anterior"
-                ]
-    case opção of
-        1 -> return ()
-        2 -> return ()
-        3 -> return ()
-        4 -> return ()
-        5 -> return ()
-        6 -> return ()
-        0 -> laçoMenuGA
-
-laçoMenuGAPerimetro :: IO ()
-laçoMenuGAPerimetro = do
-    opção <- menu [
-                    "1 - Círculo", 
-                    "2 - Triangulo", 
-                    "3 - Poligono",
-                    "4 - Esfera",
-                    "5 - Cilíndro",
-                    "6 - Paralelepipedo",
-                    "0 - Voltar a tela anterior"
-                ]
-    case opção of
-        1 -> return ()
-        2 -> return ()
-        3 -> return ()
-        4 -> return ()
-        5 -> return ()
-        6 -> return ()
-        0 -> laçoMenuGA
-
-laçoMenuGAVolume :: IO ()
-laçoMenuGAVolume = do
-    opção <- menu [
-                    "1 - Círculo", 
-                    "2 - Triangulo", 
-                    "3 - Poligono",
-                    "4 - Esfera",
-                    "5 - Cilíndro",
-                    "6 - Paralelepipedo",
-                    "0 - Voltar a tela anterior"
-                ]
-    case opção of
-        1 -> return ()
-        2 -> return ()
-        3 -> return ()
-        4 -> return ()
-        5 -> return ()
-        6 -> return ()
-        0 -> laçoMenuGA
 
 laçoMenuAL :: IO ()
 laçoMenuAL = do
@@ -292,11 +264,18 @@ laçoMenuAED = do
             imprimirResultado "Resultado: " resultado
         5 -> do
             elemento <- prompt "Elemento: "
-            lista :: [Int] <- prompt "Lista: "
+            lista :: [Double] <- prompt "Lista: "
             let resultado = inserirOrdenado elemento lista
             imprimirResultado "Resultado: " resultado
-        6 -> return ()
-        7 -> return ()
+        6 -> do
+            vetor :: [Double] <- prompt "Vetor: "
+            let resultado = construirArvore vetor
+            imprimirResultado "Resultado: " resultado
+        7 -> do
+            elemento :: Double <- prompt "Elemento: "
+            árvore :: ArvoreBinaria Double <- prompt "Árvore: "
+            let resultado = buscarArvore elemento árvore
+            imprimirResultado "Resultado: " resultado
         8 -> do
             listaDeProjetos :: [Projeto] <- prompt "Lista de projetos: "
             let resultado = filtrarProjetos (\p -> tipoProjeto p == Civil) listaDeProjetos
@@ -318,8 +297,13 @@ laçoMenuVal = do
     case opção of
         1 -> return ()
         2 -> return ()
-        3 -> return ()
-        4 -> return ()
+        3 -> do
+            projeto <- prompt "Projeto: "
+            mapM_ putStrLn (gerarRelatorioProjeto projeto)
+        4 -> do
+            projeto1 <- prompt "Projeto 1: "
+            projeto2 <- prompt "Projeto 2: "
+            putStrLn (compararProjetos projeto1 projeto2)
         5 -> return ()
         6 -> return ()
         7 -> return ()
@@ -354,7 +338,10 @@ laçoMenuCivil = do
         2 -> return ()
         3 -> return ()
         4 -> return ()
-        5 -> return ()
+        5 -> do
+            figura <- prompt "Figura: "
+            let resultado = volumeConcreto figura
+            imprimirResultado "Resultado: " resultado
         0 -> laçoMenuEngenharias
 
 laçoMenuMecânica :: IO ()
@@ -369,9 +356,22 @@ laçoMenuMecânica = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> return ()
-        2 -> return ()
-        3 -> return ()
+        1 -> do
+            força <- prompt "Força: "
+            distância <- prompt "Distância: "
+            ângulo <- prompt "Ângulo: "
+            let resultado = calcularTorque força distância ângulo
+            imprimirResultado "Resultado: " resultado
+        2 -> do
+            velocidade <- prompt "Velocidade: "
+            raio <- prompt "Raio: "
+            let resultado = velocidadeAngular velocidade raio
+            imprimirResultado "Resultado: " resultado
+        3 -> do
+            velocidade <- prompt "Velocidade: "
+            raio <- prompt "Raio: "
+            let resultado = aceleracaocentripeta velocidade raio
+            imprimirResultado "Resultado: " resultado
         4 -> do
             massa <- prompt "Massa: "
             velocidade <- prompt "Velocidade: "
@@ -424,7 +424,19 @@ laçoMenuElétrica = do
             listaResistências <- prompt "Lista de Resistência: "
             let resultado = resistenciaParalelo listaResistências
             imprimirResultado "Resultado: " resultado
-        7 -> return ()
-        8 -> return ()
-        9 -> return ()
+        7 -> do
+            resistência <- prompt "Resistência: "
+            reatencia <- prompt "Reatencia: "
+            let resultado = impedanciaAC resistência reatencia
+            imprimirResultado "Resultado: " resultado
+        8 -> do
+            raio <- prompt "Raio: "
+            theta <- prompt "Theta: "
+            let resultado = polarParaRetangular raio theta
+            imprimirResultado "Resultado: " resultado
+        9 -> do
+            x <- prompt "X: "
+            y <- prompt "Y: "
+            let resultado = retangularParaPolar x y
+            imprimirResultado "Resultado: " resultado
         0 -> laçoMenuEngenharias
