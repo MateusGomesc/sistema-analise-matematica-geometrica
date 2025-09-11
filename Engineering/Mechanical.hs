@@ -11,8 +11,8 @@ velocidadeAngular v r
   | r == 0    = 0          -- divisão por zero
   | otherwise = v / r
 
-aceleracaocentripeta :: Velocidade -> Raio -> Aceleracao
-aceleracaocentripeta v r
+aceleracaoCentripeta :: Velocidade -> Raio -> Aceleracao
+aceleracaoCentripeta v r
   | r == 0    = 0           -- evita divisão por zero
   | otherwise = v^2 / r
 

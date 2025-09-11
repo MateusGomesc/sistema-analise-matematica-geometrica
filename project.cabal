@@ -6,10 +6,9 @@ author:             Grupo de Estudantes
 maintainer:         grupo@email.com
 build-type:         Simple
 
-executable projeto-engenharia
-    main-is:          Main.hs
+library
     hs-source-dirs:   .
-    other-modules:
+    exposed-modules:
         Types,
         Geometry,
         LinearAlgebra,
@@ -26,16 +25,27 @@ executable projeto-engenharia
     build-depends:
         base >= 4.14 && < 4.22,
         time >=1.9,
-        containers >=0.6
+        containers >=0.6,
+        time
+    default-language: Haskell2010
+    ghc-options:      -Wall -Wextra
+
+executable projeto-engenharia
+    main-is:          Main.hs
+    hs-source-dirs:   .
+    build-depends:
+        base >= 4.14 && < 4.22,
+        projeto-engenharia
     default-language: Haskell2010
     ghc-options:      -Wall -Wextra -O2
 
 test-suite tests
     type:               exitcode-stdio-1.0
     main-is:            Tests/AllTests.hs
-    hs-source-dirs:     .
+    hs-source-dirs:     ., Tests
     build-depends:
         base,
         projeto-engenharia,
-        ghc-prim
+        time,
+        containers
     default-language:   Haskell2010

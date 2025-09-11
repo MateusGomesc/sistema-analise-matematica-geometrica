@@ -30,10 +30,10 @@ validarProjeto p =
     validarMaterial m =
       [ msg
       | (cond, msg) <-
-          [ (densidade m <= 0, "A densidade do material " ++ nome m ++ " deve ser positiva.")
-          , (resistencia m <= 0, "A resistência do material " ++ nome m ++ " deve ser positiva.")
-          , (custo m <= 0, "O custo do material " ++ nome m ++ " deve ser positivo.")
-          , (quantidade m < 0, "A quantidade do material " ++ nome m ++ " não pode ser negativa.")
+          [ (densidade m <= 0, "A densidade do material " ++ nomeMaterial m ++ " deve ser positiva.")
+          , (resistencia m <= 0, "A resistência do material " ++ nomeMaterial m ++ " deve ser positiva.")
+          , (custo m <= 0, "O custo do material " ++ nomeMaterial m ++ " deve ser positivo.")
+          , (quantidade m < 0, "A quantidade do material " ++ nomeMaterial m ++ " não pode ser negativa.")
           ]
       , cond
       ]

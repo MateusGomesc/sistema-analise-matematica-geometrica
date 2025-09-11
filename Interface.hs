@@ -296,7 +296,9 @@ laçoMenuVal = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> return ()
+        1 -> do
+            projeto <- prompt "Projeto: "
+            mapM_ putStrLn (validarProjeto projeto)
         2 -> return ()
         3 -> do
             projeto <- prompt "Projeto: "
@@ -342,10 +344,29 @@ laçoMenuCivil = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> return ()
-        2 -> return ()
-        3 -> return ()
-        4 -> return ()
+        1 -> do
+            largura <- prompt "Largura: "
+            altura <- prompt "Altura: "
+            let resultado = momentoInerciaRetangular largura altura
+            imprimirResultado "Resultado: " resultado
+        2 -> do
+            força <- prompt "Força: "
+            área <- prompt "Área: "
+            let resultado = tensaoNormal força área
+            imprimirResultado "Resultado: " resultado
+        3 -> do
+            força <- prompt "Força: "
+            comprimento <- prompt "Comprimento: "
+            moduloElasticidade <- prompt "Modulo de elasticidade: "
+            momentoInercia <- prompt "Momento de Ínercia: "
+            let resultado = deflexaoViga força comprimento moduloElasticidade momentoInercia
+            imprimirResultado "Resultado: " resultado
+        4 -> do
+            moduloElasticidade <- prompt "Modulo de elasticidade: "
+            momentoInercia <- prompt "Momento de Ínercia: "
+            comprimento <- prompt "Comprimento: "
+            let resultado = cargaCriticaEuler moduloElasticidade momentoInercia comprimento
+            imprimirResultado "Resultado: " resultado
         5 -> do
             figura <- prompt "Figura: "
             let resultado = volumeConcreto figura
@@ -378,7 +399,7 @@ laçoMenuMecânica = do
         3 -> do
             velocidade <- prompt "Velocidade: "
             raio <- prompt "Raio: "
-            let resultado = aceleracaocentripeta velocidade raio
+            let resultado = aceleracaoCentripeta velocidade raio
             imprimirResultado "Resultado: " resultado
         4 -> do
             massa <- prompt "Massa: "

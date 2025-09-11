@@ -129,7 +129,7 @@ data Projeto = Projeto
     { idProjeto :: Int
     , nomeProjeto :: String
     , tipoProjeto :: TipoProjeto
-    , status :: Status
+    , statusProjeto :: Status
     , coordenadas :: [Ponto3D] -- Pontos do projeto
     , figuras :: [Figura] -- Formas geom´etricas
     , materiais :: [Material] -- Materiais utilizados

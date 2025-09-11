@@ -43,7 +43,7 @@ gerarRelatorioProjeto p =
       [ "ID do Projeto: " ++ show (idProjeto p),
         "Nome:          " ++ nomeProjeto p,
         "Tipo:          " ++ show (tipoProjeto p),
-        "Status:        " ++ show (status p),
+        "Status:        " ++ show (statusProjeto p),
         "Orçamento:     R$ " ++ show (orcamento p),
         ""
       ]
@@ -92,7 +92,7 @@ compararProjetos p1 p2
           compararLinha "ID" (show $ idProjeto p1) (show $ idProjeto p2),
           compararLinha "Nome" (nomeProjeto p1) (nomeProjeto p2),
           compararLinha "Tipo" (show $ tipoProjeto p1) (show $ tipoProjeto p2),
-          compararLinha "Status" (show $ status p1) (show $ status p2),
+          compararLinha "Status" (show $ statusProjeto p1) (show $ statusProjeto p2),
           compararLinha "Orçamento" ("R$ " ++ show (orcamento p1)) ("R$ " ++ show (orcamento p2)),
           compararLinha "Data de Início" (show $ dataInicio p1) (show $ dataInicio p2),
           compararLinha "Data de Fim" (showMaybeData $ dataFim p1) (showMaybeData $ dataFim p2),
@@ -119,5 +119,5 @@ projetosEmAtraso projetos dataAtual =
   where
     emAtraso projeto =
       case dataFim projeto of
-        Just fim -> fim < dataAtual && status projeto /= Concluido
+        Just fim -> fim < dataAtual && statusProjeto projeto /= Concluido
         Nothing  -> False

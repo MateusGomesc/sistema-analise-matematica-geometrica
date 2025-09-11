@@ -5,8 +5,6 @@ import Types
 momentoInerciaRetangular :: Largura -> Altura -> MomentoInercia
 momentoInerciaRetangular b h = (b * h^3) / 12
 
-
-
 tensaoNormal :: Forca -> Area -> Pressao
 tensaoNormal f a = f / a
 
