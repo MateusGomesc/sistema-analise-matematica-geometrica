@@ -86,16 +86,16 @@ type Duracao = Double -- horas (h)
 type Prazo = Int -- dias
 
 data Status = Planejamento | EmDesenvolvimento | EmRevisao | Concluido | Cancelado
-    deriving (Show, Eq, Ord)
+    deriving (Show, Eq, Ord, Read)
 
 data TipoProjeto = Civil | Mecanica | Eletrica | Estrutural
-    deriving (Show, Eq)
+    deriving (Show, Eq, Read)
 
 data Ponto2D = Ponto2D Distancia Distancia 
-    deriving (Show, Eq)
+    deriving (Show, Eq, Read)
 
 data Ponto3D = Ponto3D Distancia Distancia Distancia 
-    deriving (Show, Eq)
+    deriving (Show, Eq, Read)
 
 data Figura = Retangulo Largura Altura
     | Circulo Raio
@@ -104,26 +104,26 @@ data Figura = Retangulo Largura Altura
     | Esfera Raio
     | Cilindro Raio Altura
     | Paralelepipedo Comprimento Largura Altura
-    deriving (Show, Eq)
+    deriving (Show, Eq, Read)
 
 data Matriz = Matriz [[Double]] 
-    deriving (Show, Eq)
+    deriving (Show, Eq, Read)
 
 data Vetor = Vetor [Double] 
-    deriving (Show, Eq)
+    deriving (Show, Eq, Read)
 
 data TipoFuncao = Linear Double Double -- ax + b
     | Quadratica Double Double Double -- ax² + bx + c
     | Exponencial Double Double -- a * e^(bx)
     | Logaritmica Double Double -- a * ln(bx)
     | Trigonometrica TipoTrig Double Double -- a * func(bx)
-    deriving (Show, Eq)
+    deriving (Show, Eq, Read, Ord)
 
 data TipoTrig = Seno | Cosseno | Tangente 
-    deriving (Show, Eq)
+    deriving (Show, Eq, Read, Ord)
 
 data Funcao = Funcao TipoFuncao String 
-    deriving (Show, Eq) -- Tipo e descri¸c~ao
+    deriving (Show, Eq, Read, Ord) -- Tipo e descri¸c~ao
 
 data Projeto = Projeto
     { idProjeto :: Int
@@ -138,7 +138,7 @@ data Projeto = Projeto
     , dataInicio :: Day
     , dataFim :: Maybe Day
     , orcamento :: Orcamento
-    } deriving (Show, Eq)
+    } deriving (Show, Eq, Read)
 
 data Material = Material
     { nomeMaterial :: String
@@ -146,7 +146,7 @@ data Material = Material
     , resistencia :: ResistenciaTracao
     , custo :: CustoUnitario
     , quantidade :: Volume
-    } deriving (Show, Eq)
+    } deriving (Show, Eq, Read)
 
 data CalculoMat = CalculoMat
     { nomeCalculo :: String
@@ -154,7 +154,7 @@ data CalculoMat = CalculoMat
     , resultado :: Double
     , unidade :: String
     , formula :: String
-    } deriving (Show, Eq)
+    } deriving (Show, Eq, Read)
 
 -- Tipo para cargas estruturais
 data Carga = CargaPontual Forca Ponto2D

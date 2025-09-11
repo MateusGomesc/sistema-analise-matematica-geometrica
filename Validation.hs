@@ -1,5 +1,7 @@
 module Validation where
 
+import Types
+
 valida :: Int -> Int -> Int -> IO Int
 valida opção min max
     | min <= opção && opção <= max = return opção
@@ -10,5 +12,3 @@ valida opção min max
         putStr "Escolha uma opção: "
         opção <- readLn
         valida opção min max
-
-validaFunção :: String -> Funcao

@@ -1,7 +1,14 @@
 module Interface where
 
+import Types
+import GHC.Classes
 import Validation
 import Calculus
+import Algorithms
+import LinearAlgebra
+import Engineering.Civil
+import Engineering.Electrical
+import Engineering.Mechanical
 
 prompt :: Read a => String -> IO a
 prompt msg = do putStr msg
@@ -25,7 +32,7 @@ menu :: [String] -> IO Int
 menu texto = do exibirOpções texto
                 lerOpção 0 (length texto - 1)
 
-imprimirResultado :: a => String -> a -> IO ()
+imprimirResultado :: Show a => String -> a -> IO ()
 imprimirResultado msg res = do
     putStrLn ""
     putStrLn "----------------------------------------------------"
@@ -59,7 +66,7 @@ laçoMenuEspecialistas = do
         5 -> laçoMenuVal
         0 -> laçoMenuPrincipal
 
-laçoMenuGA :: a => IO a
+laçoMenuGA :: IO ()
 laçoMenuGA = do
     opção <- menu [
                     "1 - Distância entre pontos 2D", 
@@ -73,17 +80,17 @@ laçoMenuGA = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> 
-        2 -> 
-        3 -> 
+        1 -> return ()
+        2 -> return ()
+        3 -> return ()
         4 -> laçoMenuGAÁrea
         5 -> laçoMenuGAPerimetro
         6 -> laçoMenuGAVolume
-        7 -> 
-        8 -> 
+        7 -> return ()
+        8 -> return ()
         0 -> laçoMenuEspecialistas
 
-laçoMenuGAÁrea :: a => IO a
+laçoMenuGAÁrea :: IO ()
 laçoMenuGAÁrea = do
     opção <- menu [
                     "1 - Círculo", 
@@ -95,15 +102,15 @@ laçoMenuGAÁrea = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> 
-        2 -> 
-        3 -> 
-        4 -> 
-        5 -> 
-        6 ->
+        1 -> return ()
+        2 -> return ()
+        3 -> return ()
+        4 -> return ()
+        5 -> return ()
+        6 -> return ()
         0 -> laçoMenuGA
 
-laçoMenuGAPerimetro :: a => IO a
+laçoMenuGAPerimetro :: IO ()
 laçoMenuGAPerimetro = do
     opção <- menu [
                     "1 - Círculo", 
@@ -115,15 +122,15 @@ laçoMenuGAPerimetro = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> 
-        2 -> 
-        3 -> 
-        4 -> 
-        5 -> 
-        6 ->
+        1 -> return ()
+        2 -> return ()
+        3 -> return ()
+        4 -> return ()
+        5 -> return ()
+        6 -> return ()
         0 -> laçoMenuGA
 
-laçoMenuGAVolume :: a => IO a
+laçoMenuGAVolume :: IO ()
 laçoMenuGAVolume = do
     opção <- menu [
                     "1 - Círculo", 
@@ -135,15 +142,15 @@ laçoMenuGAVolume = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> 
-        2 -> 
-        3 -> 
-        4 -> 
-        5 -> 
-        6 ->
+        1 -> return ()
+        2 -> return ()
+        3 -> return ()
+        4 -> return ()
+        5 -> return ()
+        6 -> return ()
         0 -> laçoMenuGA
 
-laçoMenuAL :: a => IO a
+laçoMenuAL :: IO ()
 laçoMenuAL = do
     opção <- menu [
                     "1 - Somar Matrizes", 
@@ -157,18 +164,47 @@ laçoMenuAL = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> 
-        2 -> 
-        3 -> 
-        4 -> 
-        5 -> 
-        6 -> 
-        7 -> 
-        8 -> 
+        1 -> do
+            matriz1 <- prompt "Matriz 1: "
+            matriz2 <- prompt "Matriz 2: "
+            let resultado = somarMatrizes matriz1 matriz2
+            imprimirResultado "Resultado: " resultado
+        2 -> do
+            matriz1 <- prompt "Matriz 1: "
+            matriz2 <- prompt "Matriz 2: "
+            let resultado = multiplicarMatrizes matriz1 matriz2
+            imprimirResultado "Resultado: " resultado
+        3 -> do
+            matriz <- prompt "Matriz: "
+            let resultado = transpostaMatriz matriz
+            imprimirResultado "Resultado: " resultado
+        4 -> do
+            matriz <- prompt "Matriz: "
+            let resultado = determinante matriz
+            imprimirResultado "Resultado: " resultado
+        5 -> do
+            matriz <- prompt "Matriz: "
+            vetor <- prompt "Vetor: "
+            let resultado = resolverSistemaLinear matriz vetor
+            imprimirResultado "Resultado: " resultado
+        6 -> do
+            vetor1 <- prompt "Vetor: "
+            vetor2 <- prompt "Vetor: "
+            let resultado = produtoEscalar vetor1 vetor2
+            imprimirResultado "Resultado: " resultado
+        7 -> do
+            vetor <- prompt "Vetor: "
+            let resultado =normaVetor vetor
+            imprimirResultado "Resultado: " resultado
+        8 -> do
+            vetor1 <- prompt "Vetor: "
+            vetor2 <- prompt "Vetor: "
+            let resultado = anguloEntreVetores vetor1 vetor2
+            imprimirResultado "Resultado: " resultado
         0 -> laçoMenuEspecialistas
 
-laçoMenuCalculo :: a => IO a
-laçoMenuAL = do
+laçoMenuCalculo :: IO ()
+laçoMenuCalculo = do
     opção <- menu [
                     "1 - Avaliar Função", 
                     "2 - Derivada Numérica", 
@@ -180,16 +216,50 @@ laçoMenuAL = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> 
-        2 -> 
-        3 -> 
-        4 -> 
-        5 -> 
-        6 -> 
-        7 -> 
+        1 -> do
+            função <- prompt "Função: "
+            x <- prompt "Valor de x: "
+            let resultado = avaliarFuncao função x
+            imprimirResultado "Resultado: " resultado
+        2 -> do
+            função <- prompt "Função: "
+            x <- prompt "Ponto da derivada: "
+            let resultado = derivadaNumerica função x
+            imprimirResultado "Resultado: " resultado
+        3 -> do
+            função <- prompt "Função: "
+            x1 <- prompt "Ínicio: "
+            x2 <- prompt "Final: "
+            let resultado = integralNumerica função x1 x2 1000
+            imprimirResultado "Resultado: " resultado
+        4 -> do
+            função <- prompt "Função: "
+            x1 <- prompt "Ínicio: "
+            x2 <- prompt "Final: "
+            let resultado = encontrarRaizes função x1 x2
+            imprimirResultado "Resultado: " resultado
+        5 -> do
+            função <- prompt "Função: "
+            x1 <- prompt "Ínicio: "
+            x2 <- prompt "Final: "
+            let resultado = encontrarMaximo função x1 x2
+            imprimirResultado "Resultado: " resultado
+        6 -> do
+            função <- prompt "Função: "
+            x1 <- prompt "Ínicio: "
+            x2 <- prompt "Final: "
+            let resultado = encontrarMinimo função x1 x2
+            imprimirResultado "Resultado: " resultado
+        7 -> do
+            função <- prompt "Função: "
+            x1 <- prompt "Ínicio: "
+            x2 <- prompt "Final: "
+            let resultado = calcularComprimentoCurva função x1 x2
+            imprimirResultado "Resultado: " resultado
         0 -> laçoMenuEspecialistas
+    laçoMenuCalculo
 
-laçoMenuAED :: a -> IO a
+laçoMenuAED :: IO ()
 laçoMenuAED = do
     opção <- menu [
                     "1 - Quick Sort",
@@ -199,21 +269,41 @@ laçoMenuAED = do
                     "5 - Inserir Ordenado",
                     "6 - Construir Árvore",
                     "7 - Buscar Árvore",
-                    "8 - Filtrar Projetos",
+                    "8 - Filtrar Projetos de Engenharia Civil",
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> 
-        2 -> 
-        3 -> 
-        4 -> 
-        5 -> 
-        6 -> 
-        7 -> 
-        8 -> 
+        1 -> do
+            lista :: [Double] <- prompt "Lista: "
+            let resultado = quickSort lista
+            imprimirResultado "Resultado: " resultado
+        2 -> do
+            lista :: [Double] <- prompt "Lista: "
+            let resultado = mergeSort lista
+            imprimirResultado "Resultado: " resultado
+        3 -> do
+            lista :: [Double] <- prompt "Lista: "
+            let resultado = insertionSort lista
+            imprimirResultado "Resultado: " resultado
+        4 -> do
+            id <- prompt "Id do projeto: "
+            listaDeProjetos :: [Projeto] <- prompt "Lista de projetos: "
+            let resultado = buscarProjeto id listaDeProjetos
+            imprimirResultado "Resultado: " resultado
+        5 -> do
+            elemento <- prompt "Elemento: "
+            lista :: [Int] <- prompt "Lista: "
+            let resultado = inserirOrdenado elemento lista
+            imprimirResultado "Resultado: " resultado
+        6 -> return ()
+        7 -> return ()
+        8 -> do
+            listaDeProjetos :: [Projeto] <- prompt "Lista de projetos: "
+            let resultado = filtrarProjetos (\p -> tipoProjeto p == Civil) listaDeProjetos
+            imprimirResultado "Resultado: " resultado
         0 -> laçoMenuEspecialistas
 
-laçoMenuVal :: a -> IO a
+laçoMenuVal :: IO ()
 laçoMenuVal = do
     opção <- menu [
                     "1 - Validar Projeto",
@@ -226,13 +316,13 @@ laçoMenuVal = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> 
-        2 -> 
-        3 -> 
-        4 -> 
-        5 -> 
-        6 -> 
-        7 -> 
+        1 -> return ()
+        2 -> return ()
+        3 -> return ()
+        4 -> return ()
+        5 -> return ()
+        6 -> return ()
+        7 -> return ()
         0 -> laçoMenuEspecialistas
 
 laçoMenuEngenharias :: IO ()
@@ -249,7 +339,7 @@ laçoMenuEngenharias = do
         3 -> laçoMenuElétrica
         0 -> laçoMenuPrincipal
 
-laçoMenuCivil :: a -> IO a
+laçoMenuCivil :: IO ()
 laçoMenuCivil = do
     opção <- menu [
                     "1 - Momento de Inércia Retângular",
@@ -260,14 +350,14 @@ laçoMenuCivil = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> 
-        2 -> 
-        3 -> 
-        4 -> 
-        5 -> 
+        1 -> return ()
+        2 -> return ()
+        3 -> return ()
+        4 -> return ()
+        5 -> return ()
         0 -> laçoMenuEngenharias
 
-laçoMenuMecânica :: a -> IO a
+laçoMenuMecânica :: IO ()
 laçoMenuMecânica = do
     opção <- menu [
                     "1 - Torque",
@@ -279,15 +369,26 @@ laçoMenuMecânica = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> 
-        2 -> 
-        3 -> 
-        4 -> 
-        5 -> 
-        6 -> 
+        1 -> return ()
+        2 -> return ()
+        3 -> return ()
+        4 -> do
+            massa <- prompt "Massa: "
+            velocidade <- prompt "Velocidade: "
+            let resultado = energiaCinetica massa velocidade
+            imprimirResultado "Resultado: " resultado
+        5 -> do
+            massa <- prompt "Massa: "
+            altura <- prompt "Altura: "
+            let resultado = energiaCinetica massa altura
+            imprimirResultado "Resultado: " resultado
+        6 -> do
+            massa :: [(Massa, Distancia)] <- prompt "Massa: "
+            let resultado = centroMassaX massa
+            imprimirResultado "Resultado: " resultado
         0 -> laçoMenuEngenharias
 
-laçoMenuElétrica :: a -> IO a
+laçoMenuElétrica :: IO ()
 laçoMenuElétrica = do
     opção <- menu [
                     "1 - Tensão",
@@ -302,13 +403,28 @@ laçoMenuElétrica = do
                     "0 - Voltar a tela anterior"
                 ]
     case opção of
-        1 -> 
-        2 -> 
-        3 -> 
-        4 -> 
-        5 -> 
-        6 -> 
-        7 -> 
-        8 -> 
-        9 -> 
+        1 -> do
+            resistencia <- prompt "Resitência: "
+            corrente <- prompt "Corrente: "
+            let resultado = tensaoOhm resistencia corrente
+            imprimirResultado "Resultado: " resultado
+        2 -> return ()
+        3 -> do
+            resistencia <- prompt "Resitência: "
+            corrente <- prompt "Corrente: "
+            let resultado = potenciaEletricaRI resistencia corrente
+            imprimirResultado "Resultado: " resultado
+        4 -> do
+            tensão <- prompt "Tensão: "
+            resistencia <- prompt "Resitência: "
+            let resultado = potenciaEletricaVR tensão resistencia
+            imprimirResultado "Resultado: " resultado
+        5 -> return ()
+        6 -> do
+            listaResistências <- prompt "Lista de Resistência: "
+            let resultado = resistenciaParalelo listaResistências
+            imprimirResultado "Resultado: " resultado
+        7 -> return ()
+        8 -> return ()
+        9 -> return ()
         0 -> laçoMenuEngenharias
