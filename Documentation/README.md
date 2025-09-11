@@ -115,9 +115,9 @@ determinante :: Matriz -> Maybe Double
 ```
 
 Recebe uma matriz do tipo algébrico Matriz. <br/>
-Verifica se a matriz é quadrada. <br/>
-Calcula o determinante utilizando expansão de Laplace.<br/>
-Retorna Just Double com o valor do determinante ou Nothing se a matriz não for quadrada. <br/>
+Verifica se a matriz possui dimensão 1x1, 2x2 ou 3x3. <br/>
+Calcula o determinante utilizando o método de Sarrus.<br/>
+Retorna Just Double com o valor do determinante ou Nothing se a matriz não for quadrada ou tiver dimensão inválida. <br/>
 
 ```haskell
 resolverSistemaLinear :: Matriz -> Vetor -> Maybe Vetor
