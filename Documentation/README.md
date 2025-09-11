@@ -396,3 +396,33 @@ resistenciaParalelo :: [Resistencia] -> Resistencia
 Recebe uma lista de resistências ([Resistencia]). <br/>
 Realiza o cálculo da resistência equivalente de resistores ligados em paralelo. <br/>
 Retorna um tipo algebrico Resistencia com o resultado. <br/>
+
+```haskell
+impedanciaAC :: Resistencia -> Reatancia -> Impedancia
+```
+Recebe a resistência (R) e a reatância (X) de um circuito AC. <br/>
+Calcula a magnitude da impedância, que é a raiz quadrada da soma dos quadrados de R e X. <br/>
+Devolve um valor do tipo Impedancia (Double) representando a magnitude da impedância. <br/>
+
+```haskell
+polarParaRetangular :: Double -> Angulo -> (Double, Double)
+```
+Recebe um valor de magnitude (r) e um ângulo (theta) em radianos. <br/>
+Converte as coordenadas polares para coordenadas retangulares (cartesianas). <br/>
+Devolve uma tupla (x, y) representando as coordenadas retangulares correspondentes. <br/>
+
+```haskell
+retangularParaPolar :: Double -> Double -> (Double, Angulo)
+```
+Recebe as coordenadas retangulares (x, y). <br/>
+Converte as coordenadas retangulares para coordenadas polares. <br/>
+Devolve uma tupla (r, theta) onde: <br/>
+    - r é a magnitude (distância da origem), <br/>
+    - theta é o ângulo em radianos. <br/>
+  
+```haskell
+potenciaEletricaVI :: Tensao -> Corrente -> PotenciaEletrica
+```
+Recebe a tensão (v) e a corrente (i) de um circuito elétrico. <br/>
+Calcula a potência elétrica instantânea como o produto da tensão pela corrente. <br/>
+Devolve um valor do tipo PotenciaEletrica (Double) representando a potência em watts. <br/>
