@@ -415,8 +415,8 @@ Devolve uma tupla (x, y) representando as coordenadas retangulares correspondent
 retangularParaPolar :: Double -> Double -> (Double, Angulo)
 ```
 Recebe as coordenadas retangulares (x, y). <br/>
--- Converte as coordenadas retangulares para coordenadas polares. <br/>
--- Devolve uma tupla (r, theta) onde: <br/>
+Converte as coordenadas retangulares para coordenadas polares. <br/>
+Devolve uma tupla (r, theta) onde: <br/>
     - r é a magnitude (distância da origem), <br/>
     - theta é o ângulo em radianos. <br/>
   
