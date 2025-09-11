@@ -306,8 +306,15 @@ laçoMenuVal = do
             projeto2 <- prompt "Projeto 2: "
             putStrLn (compararProjetos projeto1 projeto2)
         5 -> return ()
-        6 -> return ()
-        7 -> return ()
+        6 -> do
+            projetos :: [Projeto] <- prompt "Lista de projetos: "
+            let resultado = contarPorTipo projetos
+            imprimirResultado "Resultado: " resultado
+        7 -> do
+            projetos :: [Projeto] <- prompt "Lista de projetos: "
+            dataLimite <- prompt "Data limite: "
+            let resultado = projetosEmAtraso projetos dataLimite
+            imprimirResultado "Resultado: " resultado
         0 -> laçoMenuEspecialistas
 
 laçoMenuEngenharias :: IO ()
