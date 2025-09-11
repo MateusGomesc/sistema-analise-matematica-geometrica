@@ -104,6 +104,14 @@ compararProjetos p1 p2
           "=========================================="
         ]
 
+estatisticasBasicas :: [Double] -> (Double, Double, Double)
+estatisticasBasicas [] = (0, 0, 0)
+estatisticasBasicas xs = (media, maximo, minimo)
+  where
+    media = sum xs / fromIntegral (length xs)
+    maximo = maximum xs
+    minimo = minimum xs
+
 contarPorTipo :: [Projeto] -> [(TipoProjeto, Int)]
 contarPorTipo projetos =
   filter (\(_, n) -> n > 0)  -- Filtra n > 0. So lista se tiver pelo menos um projeto daquele tipo
