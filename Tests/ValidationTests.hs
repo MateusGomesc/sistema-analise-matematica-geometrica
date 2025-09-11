@@ -158,13 +158,13 @@ testeCalcularCustoTotalQuantidadeZero =
 
 testeCalcularCustoTotalDecimais :: Bool
 testeCalcularCustoTotalDecimais =
-    let material1 = Material "Material A" 1000 1e6 12.34 56.78 -- 12.34 * 56.78 = 700.5852
+    let material1 = Material "Material A" 1000 1e6 12.34 56.78 -- 12.34 * 56.78 = 700.5852 CALCULOS CORRIGIDOS = 700.6652
         material2 = Material "Material B" 2000 2e6 9.87 10.11 -- 9.87 * 10.11 = 99.7857
         projeto = Projeto 1 "Projeto Decimal" Civil Planejamento [] []
             [material1, material2] [] []
             (fromGregorian 2025 1 1) Nothing 50000
         custoTotal = calcularCustoTotal projeto
-        esperado = 800.3709 -- 700.5852 + 99.7857
+        esperado = 800.4509 -- 700.6652 + 99.7857    -- CALCULOS CORRIGIDOS
     in abs (custoTotal - esperado) < 0.01
 
 testeCalcularCustoTotalMuitosMateriais :: Bool
