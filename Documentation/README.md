@@ -299,6 +299,26 @@ Percorre a lista aplicando a função de filtragem a cada projeto.  <br/>
 Retorna uma nova lista contendo apenas os projetos que satisfazem o critério (para os quais a função retorna 'True').  <br/>
 
 ### Especialista 5: Validação, Relatórios e Interface
+```haskell
+validarProjeto :: Projeto -> [String]
+```
+Recebe um tipo algebrico Projeto representando o projeto a ser validado.<br/>
+Verifica diversas regras de consistência do projeto:<br/>
+ID positivo.<br/>
+Nome não vazio e com tamanho aceitável.<br/>
+Orçamento positivo.<br/>
+Deve conter pelo menos um material válido.<br/>
+Cada material deve ter densidade, resistência e custo positivos, e quantidade não negativa.<br/>
+Data de término (se fornecida) não pode ser anterior à data de início.<br/>
+Devolve uma lista de String com as mensagens de erro encontradas.<br/>
+Se não houver erros, devolve uma lista vazia ([]).<br/>
+
+```haskell
+calcularCustoTotal :: Projeto -> Custo
+```Recebe um tipo algebrico Projeto representando o projeto desejado.<br/>
+Percorre a lista de materiais do projeto e calcula o custo total multiplicando o custo de cada material pela sua quantidade.<br/>
+Soma todos os valores para obter o custo total do projeto.<br/>
+Devolve um valor do tipo Custo (Double) representando o custo total calculado.<br/>
 
 ```haskell
 formatarMaterial :: Material -> String
