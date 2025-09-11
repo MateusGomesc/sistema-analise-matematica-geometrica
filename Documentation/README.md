@@ -389,6 +389,36 @@ Para cada Projeto, verifica se possui uma data de fim definida (Just fim), se ai
 Retorna uma lista contendo os projetos que estão em atraso. <br/>
 
 ### Engenharia Civil
+```haskell
+momentoInerciaRetangular :: Largura -> Altura -> MomentoInercia
+```
+Recebe a largura e a altura da seção retangular representadas pelos tipos Largura e Altura.<br/>
+Calcula o momento de inércia da seção usando a fórmula (b * h^3) / 12.<br/>
+Devolve um valor do tipo MomentoInercia (Double) representando o momento de inércia da seção.<br/>
+
+```haskell
+tensaoNormal :: Forca -> Area -> Pressao
+```
+Recebe a força aplicada e a área da seção representadas pelos tipos Forca e Area.<br/>
+Calcula a tensão normal dividindo a força pela área.<br/>
+Devolve um valor do tipo Pressao (Double) representando a tensão normal na seção.<br/>
+
+```haskell
+deflexaoViga :: Forca -> Comprimento -> ModuloElasticidade -> MomentoInercia -> Distancia
+```
+Recebe a força aplicada, comprimento da viga, módulo de elasticidade e momento de inércia da seção representados pelos tipos Forca, Comprimento, ModuloElasticidade e MomentoInercia.<br/>
+Calcula a deflexão máxima usando a fórmula (F * L^3) / (48 * E * I).<br/>
+Devolve um valor do tipo Distancia (Double) representando a deflexão máxima da viga.<br/>
+
+```haskell
+cargaCriticaEuler :: ModuloElasticidade -> MomentoInercia -> Comprimento -> Forca
+```
+Recebe o módulo de elasticidade, momento de inércia da seção e comprimento da coluna representados pelos tipos ModuloElasticidade, MomentoInercia e Comprimento.<br/>
+Calcula a carga crítica usando a fórmula (π^2 * E * I) / L^2.<br/>
+Devolve um valor do tipo Forca (Double) representando a carga máxima que a coluna pode suportar antes de flambar.<br/>
+
+
+
 
 ```haskell
 volumeConcreto :: Figura -> Volume
