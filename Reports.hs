@@ -4,7 +4,8 @@ import Types
 import Data.Time.Calendar
 import Text.Printf (printf)
 
-
+calcularCustoTotal :: Projeto -> Custo
+calcularCustoTotal p = sum $ map (\(Material _ _ _ preco quantidade) -> preco * quantidade) (materiais p)
 
 formatarMaterial :: Material -> String
 formatarMaterial mat =
