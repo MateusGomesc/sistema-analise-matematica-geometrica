@@ -70,54 +70,29 @@ showMaybeData :: Maybe Day -> String
 showMaybeData Nothing  = "Não definida"
 showMaybeData (Just d) = show d
 
-compararMateriais :: String -> String -> String
-compararMateriais m1 m2 =
-  "Materiais : " ++ m1 ++ " vs " ++ m2 ++
-    if m1 == m2 then " (Iguais)" else " (Diferentes)"
-
-compararComplexidade :: String -> String -> String
-compararComplexidade c1 c2 =
-  "Complexidade : " ++ c1 ++ " vs " ++ c2 ++
-    if c1 == c2 then " (Iguais)" else " (Diferentes)"
-
+compararLinha :: String -> String -> String -> String
+compararLinha atributo val1 val2 =
+  let
+    padding = 20
+    padLength = max 0 (padding - length atributo)
+    attrPad = atributo ++ replicate padLength ' '
+    indicador = if val1 == val2 then " (Iguais)" else " (Diferentes)"
+  in
+    attrPad ++ ": " ++ val1 ++ " vs " ++ val2 ++ indicador
+    
 compararOrcamento :: Float -> Float -> String
 compararOrcamento o1 o2 =
   let s1 = "R$ " ++ show o1
       s2 = "R$ " ++ show o2
       comparacao
-        | abs (o1 - o2) < 0.01 = " (Iguais)"
+        | o1 == o2 = " (Iguais)"
         | o1 > o2  = " (Maior que o outro)"
         | otherwise = " (Menor que o outro)"
-  in "Orçamento : " ++ s1 ++ " vs " ++ s2 ++ comparacao
-
-compararCustoTotal :: Float -> Float -> String
-compararCustoTotal c1 c2 =
-  let s1 = "R$ " ++ show c1
-      s2 = "R$ " ++ show c2
-      comparacao
-        | abs (c1 - c2) < 0.01 = " (Iguais)"
-        | c1 > c2  = " (Maior que o outro)"
-        | otherwise = " (Menor que o outro)"
-  in "Custo Total : " ++ s1 ++ " vs " ++ s2 ++ comparacao
-
-calcularCustoTotal :: Projeto -> Custo
-calcularCustoTotal projeto =
-  sum [preco * quantidade | Material _ _ _ preco quantidade <- materiais projeto]
-
-compararLinha :: String -> String -> String -> String
-compararLinha atributo val1 val2
-  | atributo == "Materiais"    = compararMateriais val1 val2
-  | atributo == "Complexidade" = compararComplexidade val1 val2
-  | atributo == "Orçamento"    =
-      compararOrcamento (read val1 :: Float) (read val2 :: Float)
-  | atributo == "Custo Total"  =
-      compararCustoTotal (read val1 :: Float) (read val2 :: Float)
-  | otherwise = atributo ++ " : " ++ val1 ++ " vs " ++ val2 ++
-      if val1 == val2 then " (Iguais)" else " (Diferentes)"
-
+  in "Orçamento           : " ++ s1 ++ " vs " ++ s2 ++ comparacao
+  
 compararProjetos :: Projeto -> Projeto -> String
 compararProjetos p1 p2
-  | p1 == p2 = "São iguais"
+  | p1 == p2 = 
   | otherwise =
       unlines
         [ "=========================================="
@@ -127,7 +102,7 @@ compararProjetos p1 p2
         , compararLinha "Nome" (nomeProjeto p1) (nomeProjeto p2)
         , compararLinha "Tipo" (show $ tipoProjeto p1) (show $ tipoProjeto p2)
         , compararLinha "Status" (show $ statusProjeto p1) (show $ statusProjeto p2)
-        , compararLinha "Orçamento" (printf "%.2f" $ orcamento p1) (printf "%.2f" $ orcamento p2)
+        , compararLinha "Orçamento" ("R$ " ++ show (orcamento p1)) ("R$ " ++ show (orcamento p2))
         , compararLinha "Data de Início" (show $ dataInicio p1) (show $ dataInicio p2)
         , compararLinha "Data de Fim" (showMaybeData $ dataFim p1) (showMaybeData $ dataFim p2)
         , ""
@@ -137,7 +112,7 @@ compararProjetos p1 p2
         , compararLinha "Nº de Funções" (show $ length $ funcoes p1) (show $ length $ funcoes p2)
         , "=========================================="
         ]
-      
+
 estatisticasBasicas :: [Double] -> (Double, Double, Double)
 estatisticasBasicas [] = (0, 0, 0)
 estatisticasBasicas xs = (media, maximo, minimo)
