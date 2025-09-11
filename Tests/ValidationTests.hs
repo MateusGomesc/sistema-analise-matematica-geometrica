@@ -424,9 +424,8 @@ testeCompararProjetosDiferentesTipo =
         length resultado > 50
   where
     isInfixOf xs ys = any (isPrefixOf xs) (tails ys)
-    iPrefixOf _ [] = False
+    isPrefixOf _ [] = False
     isPrefixOf [] _ = True
-    isPrefixOf (_:_) [] = False
     isPrefixOf (x:xs) (y:ys) = x == y && isPrefixOf xs ys
     tails [] = [[]]
     tails xs@(_:ys) = xs : tails ys
