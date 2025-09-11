@@ -33,21 +33,15 @@ transpostaMatriz (Matriz m) = Matriz (transpor m)
     transpor x = map head x : transpor (map tail x)
 
 determinante :: Matriz -> Maybe Double
-determinante (Matriz []) = Just 0
 determinante (Matriz [[n]]) = Just n
-determinante (Matriz m)
-  | not (quadrada m) = Nothing
-  | otherwise = Just (sum [ cofactor j | j <- [0..length m - 1] ])
-  where
-    quadrada mat = all (\linha -> length linha == length mat) mat
-
-    cofactor j = ((-1) ^ j) * (head m !! j) * determinanteMenor 0 j m
-
-    determinanteMenor r c mat = 
-      let menor = [ take c linha ++ drop (c + 1) linha | (i, linha) <- zip [0..] mat, i /= r ]
-      in case determinante (Matriz menor) of
-           Just d  -> d
-           Nothing -> 0  -- fallback seguro, embora não devesse ocorrer se `quadrada` for verdadeira
+determinante (Matriz [[a, b], [c, d]]) = Just (a * d - b * c)
+determinante (Matriz [[a11, a12, a13],
+                      [a21, a22, a23],
+                      [a31, a32, a33]]) =
+  let pos = a11*a22*a33 + a12*a23*a31 + a13*a21*a32
+      neg = a13*a22*a31 + a11*a23*a32 + a12*a21*a33
+  in Just (pos - neg)
+determinante _ = Nothing
 
 -- Resolve sistema linear de equacoes usando Cramer
 resolverSistemaLinear :: Matriz -> Vetor -> Maybe Vetor
@@ -91,5 +85,6 @@ anguloEntreVetores v1 v2 =
   where
     normaV1 = normaVetor v1
     normaV2 = normaVetor v2
+
 
 
