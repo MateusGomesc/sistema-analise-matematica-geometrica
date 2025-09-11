@@ -145,7 +145,7 @@ data Material = Material
     , densidade :: Densidade
     , resistencia :: ResistenciaTracao
     , custo :: CustoUnitario
-    , quantidade :: Volume
+    , quantidade :: Double        -- CORRIGIDO ("Volume" substituido por "Double")
     } deriving (Show, Eq, Read)
 
 data CalculoMat = CalculoMat
