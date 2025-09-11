@@ -82,7 +82,17 @@ compararLinha atributo val1 val2 =
     indicador = if val1 == val2 then " (Iguais)" else " (Diferentes)"
   in
     attrPad ++ ": " ++ val1 ++ " vs " ++ val2 ++ indicador
-
+    
+compararOrcamento :: Float -> Float -> String
+compararOrcamento o1 o2 =
+  let s1 = "R$ " ++ show o1
+      s2 = "R$ " ++ show o2
+      comparacao
+        | o1 == o2 = " (Iguais)"
+        | o1 > o2  = " (Maior que o outro)"
+        | otherwise = " (Menor que o outro)"
+  in "Orçamento           : " ++ s1 ++ " vs " ++ s2 ++ comparacao
+  
 compararProjetos :: Projeto -> Projeto -> String
 compararProjetos p1 p2
   | p1 == p2 = 
