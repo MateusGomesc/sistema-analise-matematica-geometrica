@@ -315,7 +315,8 @@ Se não houver erros, devolve uma lista vazia ([]).<br/>
 
 ```haskell
 calcularCustoTotal :: Projeto -> Custo
-```Recebe um tipo algebrico Projeto representando o projeto desejado.<br/>
+```
+Recebe um tipo algebrico Projeto representando o projeto desejado.<br/>
 Percorre a lista de materiais do projeto e calcula o custo total multiplicando o custo de cada material pela sua quantidade.<br/>
 Soma todos os valores para obter o custo total do projeto.<br/>
 Devolve um valor do tipo Custo (Double) representando o custo total calculado.<br/>
