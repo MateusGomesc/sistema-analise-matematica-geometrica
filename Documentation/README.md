@@ -345,6 +345,14 @@ Verifica se o atributo é igual ou diferente nos dois projetos e monta uma strin
 Devolve uma string formatada da linha do atributo <br/>
 
 ```haskell
+compararLinha :: String -> String -> String -> String
+```
+Recebe dois valores de orçamento (Float) representando os custos de dois projetos. <br/>
+Converte cada valor em string no formato monetário com o prefixo "R$". <br/>
+Verifica se os orçamentos são iguais, maior ou menor em relação ao outro projeto. <br/>
+Devolve uma string formatada comparando os dois orçamentos e indicando o resultado da comparação. <br/>
+
+```haskell
 showMaybeData :: Maybe Day -> String
 ```
 Recebe um Maybe Data  <br/>
