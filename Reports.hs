@@ -92,7 +92,7 @@ compararOrcamento o1 o2 =
   
 compararProjetos :: Projeto -> Projeto -> String
 compararProjetos p1 p2
-  | p1 == p2 = 
+  | p1 == p2 = "São iguais"
   | otherwise =
       unlines
         [ "=========================================="
@@ -102,7 +102,7 @@ compararProjetos p1 p2
         , compararLinha "Nome" (nomeProjeto p1) (nomeProjeto p2)
         , compararLinha "Tipo" (show $ tipoProjeto p1) (show $ tipoProjeto p2)
         , compararLinha "Status" (show $ statusProjeto p1) (show $ statusProjeto p2)
-        , compararLinha "Orçamento" ("R$ " ++ show (orcamento p1)) ("R$ " ++ show (orcamento p2))
+        , compararLinha "Orçamento" (printf "%.2f" $ orcamento p1) (printf "%.2f" $ orcamento p2)
         , compararLinha "Data de Início" (show $ dataInicio p1) (show $ dataInicio p2)
         , compararLinha "Data de Fim" (showMaybeData $ dataFim p1) (showMaybeData $ dataFim p2)
         , ""
